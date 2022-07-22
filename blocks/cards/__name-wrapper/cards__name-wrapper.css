@@ -1,0 +1,10 @@
+.cards__name-wrapper {
+  background-color: #fff;
+  display: flex;
+  padding: 25px 15px 31px 21px;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
+  border: none;
+}
