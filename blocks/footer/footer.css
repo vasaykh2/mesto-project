@@ -1,19 +1,18 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 48px;
-  padding-bottom: 24px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 60px;
 }
 
-@media (max-width: 780px) {
+@media screen and (max-width: 977px) {
   .footer {
-    margin: 0 24px;
+    width: calc(2 * 282px + 17px);
   }
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 645px) {
   .footer {
-    flex-direction: column;
-    row-gap: 48px;
+    width: 320px;
+    padding-bottom: 36px;
   }
 }

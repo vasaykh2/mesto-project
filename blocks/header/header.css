@@ -1,26 +1,19 @@
 .header {
   width: 100%;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-  margin: 0 auto 40px;
+  margin: 0 auto;
   padding: 45px 0 41px;
 }
 
-/*@media screen and (max-width: 1024px) {
+@media screen and (max-width: 977px) {
   .header {
-    margin-bottom: 48px;
+    width: calc(2 * 282px + 17px);
   }
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 645px) {
   .header {
-    margin: 0 24px 48px;
+    width: 320px;
+    padding: 28px 0 31px;
   }
 }
-
-@media screen and (max-width: 320px) {
-  .header {
-    padding-top: 16px;
-    margin: 0 16px 48px;
-  }
-}
-*/
