@@ -13,3 +13,11 @@
   justify-content: stretch;
   align-items: stretch;
 }
+
+@media (max-width: 645px) {
+  .popup__container {
+    max-width: 282px;
+    min-height: 322px;
+    padding: 25px 22px;
+  }
+}

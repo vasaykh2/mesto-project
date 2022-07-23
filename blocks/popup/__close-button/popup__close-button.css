@@ -3,9 +3,23 @@
   height: 32px;
   background: none;
   background-image: url(../../../images/close-button-img.svg);
+  background-size: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
   border: none;
   padding: 0;
   position: absolute;
   top: -40px;
   right: -42px;
+  cursor: pointer;
+}
+
+@media (max-width: 645px) {
+  .popup__close-button {
+    width: 20px;
+    height: 20px;
+
+    top: -38px;
+    right: 0px;
+  }
 }

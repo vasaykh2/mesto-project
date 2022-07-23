@@ -13,7 +13,7 @@
   justify-self: end;
 }
 
-@media screen and (max-width: 645px) {
+@media (max-width: 645px) {
   .profile__add-button {
     width: 282px;
     height: 50px;

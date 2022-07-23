@@ -7,13 +7,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media screen and (max-width: 1000px) {
+@media (max-width: 1000px) {
   .page {
     width: 90%;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media (max-width: 320px) {
   .page {
     width: 100%;
   }

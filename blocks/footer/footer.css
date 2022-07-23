@@ -4,13 +4,13 @@
   padding-bottom: 60px;
 }
 
-@media screen and (max-width: 977px) {
+@media (max-width: 977px) {
   .footer {
     width: calc(2 * 282px + 17px);
   }
 }
 
-@media screen and (max-width: 645px) {
+@media (max-width: 645px) {
   .footer {
     width: 320px;
     padding-bottom: 36px;

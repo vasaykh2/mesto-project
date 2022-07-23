@@ -5,8 +5,20 @@
   background-color: #000;
   border-radius: 2px;
   color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
   padding: 0;
   border: none;
   cursor: pointer;
   transition: opacity 0.5s linear;
+}
+
+@media (max-width: 645px) {
+  .form__save-button {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
