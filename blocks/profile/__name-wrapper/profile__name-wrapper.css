@@ -3,3 +3,9 @@
   align-items: center;
   gap: 18px;
 }
+
+@media (max-width: 977px) {
+  .profile__name-wrapper {
+    gap: 10px;
+  }
+}
