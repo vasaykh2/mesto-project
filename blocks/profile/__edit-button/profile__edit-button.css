@@ -8,6 +8,12 @@
   background-repeat: no-repeat;
   border: 1px solid #fff;
   padding: 0;
+  cursor: pointer;
+  transition: opacity 0.4s linear;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 @media (max-width: 977px) {

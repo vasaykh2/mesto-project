@@ -11,7 +11,11 @@
   padding: 0;
   border: none;
   cursor: pointer;
-  transition: opacity 0.5s linear;
+  transition: opacity 0.4s linear;
+}
+
+.form__save-button:hover {
+  opacity: 0.8;
 }
 
 @media (max-width: 645px) {
