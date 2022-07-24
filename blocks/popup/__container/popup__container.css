@@ -10,7 +10,8 @@
   z-index: 3;
   padding: 34px 36px 37px;
   display: flex;
-  justify-content: stretch;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: stretch;
 }
 
