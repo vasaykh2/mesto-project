@@ -41,77 +41,7 @@
         </section>
 
         <section class="elements" aria-label="Карточки">
-          <ul class="cards">
-            <li class="cards__item">
-              <img
-                src="./images/taganay-national-park.jpg"
-                alt="Таганай"
-                class="cards__image"
-              />
-              <div class="cards__name-wrapper">
-                <h2 class="cards__name">з. Таганай</h2>
-                <button
-                  type="button"
-                  class="cards__like-button cards__like-button_liked"
-                ></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/yugyd-va-national-park.jpg"
-                alt="Югыд Ва"
-                class="cards__image"
-              />
-              <div class="cards__name-wrapper">
-                <h2 class="cards__name">н.п. Югыд Ва</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/manpupuner-plateau.jpg"
-                alt="Мань-Пупу-нёр"
-                class="cards__image"
-              />
-              <div class="cards__name-wrapper">
-                <h2 class="cards__name">Мань-Пупу-нёр</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/lake-arakul-and-arakul-shikhan.jpg"
-                alt="Шихан"
-                class="cards__image"
-              />
-              <div class="cards__name-wrapper">
-                <h2 class="cards__name">гора Шихан</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/chusovaya-river.jpg"
-                alt="Чусовая"
-                class="cards__image"
-              />
-              <div class="cards__name-wrapper">
-                <h2 class="cards__name">р. Чусовая</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/lake-turgoyak.jpg"
-                alt="Тургояк"
-                class="cards__image"
-              />
-              <div class="cards__name-wrapper">
-                <h2 class="cards__name">оз. Тургояк</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards"></ul>
         </section>
       </main>
 
@@ -155,7 +85,7 @@
         <button type="button" class="popup__close-button"></button>
       </div>
     </section>
-    <template id="card">
+    <template id="card-template">
       <li class="cards__item">
         <img
           src="./images/taganay-national-park.jpg"
@@ -164,10 +94,7 @@
         />
         <div class="cards__name-wrapper">
           <h2 class="cards__name">з. Таганай</h2>
-          <button
-            type="button"
-            class="cards__like-button cards__like-button_liked"
-          ></button>
+          <button type="button" class="cards__like-button"></button>
         </div>
         <button type="button" class="cards__delete-button"></button>
       </li>
