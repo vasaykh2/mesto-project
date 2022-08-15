@@ -68,6 +68,7 @@
             id="user-name"
             required=""
           />
+          <span class="form__input-error user-name-error"></span>
           <input
             type="text"
             name="userJob"
@@ -78,6 +79,7 @@
             id="user-job"
             required=""
           />
+          <span class="form__input-error user-job-error"></span>
           <button type="submit" class="form__save-button" value="Сохранить">
             Сохранить
           </button>
@@ -85,6 +87,51 @@
         <button type="button" class="popup__close-button"></button>
       </div>
     </section>
+
+    <section class="popup popup_content_add-card">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form
+          class="form form_content_add-card"
+          name="formAdd"
+          novalidate=""
+        >
+          <input
+            type="text"
+            name="placeName"
+            minlength="2"
+            maxlength="30"
+            placeholder="Название"
+            class="form__item form__item_place_name"
+            id="place-name"
+            required=""
+          />
+          <span class="form__input-error place-name-error"></span> 
+          <input
+            type="url"
+            name="placeLink"            
+            placeholder="Ссылка на картинку"
+            class="form__item form__item_place_link"
+            id="place-link"
+            required=""
+          />
+          <span class="form__input-error place-link-error"></span>
+          <button type="submit" class="form__save-button" value="Создать">
+            Создать
+          </button>
+        </form>
+        <button type="button" class="popup__close-button"></button>
+      </div>
+    </section>
+
+    <section class="popup popup_content_image">
+      <div class="popup__image-container">
+        <img src="./" alt="место" class="popup__image" />
+        <p class="popup__image-caption">Место</p>
+        <button type="button" class="popup__close-button"></button>
+      </div>
+    </section>
+
     <template id="card-template">
       <li class="cards__item">
         <img
