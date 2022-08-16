@@ -47,6 +47,11 @@ const inputCardName = popupAddCard.querySelector('.form__item_place_name');
 const inputCardLink = popupAddCard.querySelector('.form__item_place_link');
 const popupCloseButtonAdd = popupAddCard.querySelector('.popup__close-button');
 
+const popupImg = document.querySelector('.popup_content_image');
+const image = popupImg.querySelector('.popup__image');
+const imageCaption = popupImg.querySelector('.popup__image-caption');
+const popupCloseButtonImg = popupImg.querySelector('.popup__close-button');
+
 //открытие popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -99,9 +104,20 @@ function addCard(item) {
     .cloneNode(true);
   cardElement.querySelector('.cards__name').textContent = item.name;
   cardElement.querySelector('.cards__image').src = item.link;
+  cardElement.querySelector('.cards__image').alt = item.name;
   cardContainer.prepend(cardElement);
   likeCard(cardElement);
   delCard(cardElement);
+
+  //обработчик клика на картинку карточки (открытия popup-img)
+  cardElement
+    .querySelector('.cards__image')
+    .addEventListener('click', (evt) => {
+      image.src = item.link;
+      image.alt = item.name;
+      imageCaption.textContent = item.name;
+      openPopup(popupImg);
+    });
 }
 
 //функция submit для формы добавления карточки
@@ -115,13 +131,13 @@ function formAddCardSubmitHandler(evt) {
 }
 
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
-editButton.addEventListener('click', function () {
+editButton.addEventListener('click', (evt) => {
   updateFormEditProfile();
   openPopup(popupEditProfile);
 });
 
 //обработчик кнопки закрытия popup редактирования профиля
-popupCloseButtonEdit.addEventListener('click', function () {
+popupCloseButtonEdit.addEventListener('click', (evt) => {
   closePopup(popupEditProfile);
 });
 
@@ -129,17 +145,22 @@ popupCloseButtonEdit.addEventListener('click', function () {
 formEditProfile.addEventListener('submit', formEditProfileSubmitHandler);
 
 //обработчик кнопки открытия popup для добавления карточки
-addButton.addEventListener('click', function () {
+addButton.addEventListener('click', (evt) => {
   openPopup(popupAddCard);
 });
 
 //обработчик кнопки закрытия popup добавления карточки
-popupCloseButtonAdd.addEventListener('click', function () {
+popupCloseButtonAdd.addEventListener('click', (evt) => {
   closePopup(popupAddCard);
 });
 
 //обработчик submit для формы добавления карточки
 formAddCard.addEventListener('submit', formAddCardSubmitHandler);
+
+//обработчик кнопки закрытия popup-img
+popupCloseButtonImg.addEventListener('click', (evt) => {
+  closePopup(popupImg);
+});
 
 //добавление 6 карточек при загрузке страницы
 initialCards.forEach((item) => {
