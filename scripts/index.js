@@ -71,15 +71,24 @@ function formEditProfileSubmitHandler(evt) {
   closePopup(popupEditProfile);
 }
 
-//функция удаления карточки из имеющегося набора на момент объявления функции
-function delCard() {
-  let delCardButtons = cardContainer.querySelectorAll('.cards__delete-button');
+//функция удаления карточки из имеющегося набора
+function delCard(element) {
   //обработчик кнопки удаления карточки
-  delCardButtons.forEach((item) => {
-    item.addEventListener('click', (evt) => {
+  element
+    .querySelector('.cards__delete-button')
+    .addEventListener('click', (evt) => {
       evt.target.parentNode.remove();
     });
-  });
+}
+
+//функция liked карточки
+function likeCard(element) {
+  //обработчик кнопки liked
+  element
+    .querySelector('.cards__like-button')
+    .addEventListener('click', (evt) => {
+      evt.target.classList.toggle('cards__like-button_liked');
+    });
 }
 
 //функция добавления карточки с местом, аргумент - объект с двумя ключами name и link
@@ -90,15 +99,9 @@ function addCard(item) {
     .cloneNode(true);
   cardElement.querySelector('.cards__name').textContent = item.name;
   cardElement.querySelector('.cards__image').src = item.link;
-  cardElement
-    .querySelector('.cards__like-button')
-    .addEventListener('click', function (evt) {
-      evt.target.classList.toggle('cards__like-button_liked');
-    });
-
   cardContainer.prepend(cardElement);
-
-  delCard();
+  likeCard(cardElement);
+  delCard(cardElement);
 }
 
 //функция submit для формы добавления карточки
