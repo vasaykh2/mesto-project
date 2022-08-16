@@ -113,13 +113,15 @@ function addCard(item) {
   const cardElement = cardTemplate
     .querySelector('.cards__item')
     .cloneNode(true);
+  const cardsImage = cardElement.querySelector('.cards__image');
+  cardsImage.src = item.link;
+  cardsImage.alt = item.name;
   cardElement.querySelector('.cards__name').textContent = item.name;
-  cardElement.querySelector('.cards__image').src = item.link;
-  cardElement.querySelector('.cards__image').alt = item.name;
-  cardContainer.prepend(cardElement);
+
   likeCard(cardElement);
   delCard(cardElement);
   imageCard(cardElement, item);
+  cardContainer.prepend(cardElement);
 }
 
 //функция submit для формы добавления карточки
