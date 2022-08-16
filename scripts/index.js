@@ -96,6 +96,17 @@ function likeCard(element) {
     });
 }
 
+//функция открытия popup-img карточки
+function imageCard(element, item) {
+  //обработчик клика на картинку карточки и открытия popup
+  element.querySelector('.cards__image').addEventListener('click', (evt) => {
+    image.src = item.link;
+    image.alt = item.name;
+    imageCaption.textContent = item.name;
+    openPopup(popupImg);
+  });
+}
+
 //функция добавления карточки с местом, аргумент - объект с двумя ключами name и link
 function addCard(item) {
   const cardTemplate = document.querySelector('#card-template').content;
@@ -108,16 +119,7 @@ function addCard(item) {
   cardContainer.prepend(cardElement);
   likeCard(cardElement);
   delCard(cardElement);
-
-  //обработчик клика на картинку карточки (открытия popup-img)
-  cardElement
-    .querySelector('.cards__image')
-    .addEventListener('click', (evt) => {
-      image.src = item.link;
-      image.alt = item.name;
-      imageCaption.textContent = item.name;
-      openPopup(popupImg);
-    });
+  imageCard(cardElement, item);
 }
 
 //функция submit для формы добавления карточки
