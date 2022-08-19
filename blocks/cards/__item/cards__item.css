@@ -1,4 +1,7 @@
 .cards__item {
   font-size: 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
 }
