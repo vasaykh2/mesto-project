@@ -2,7 +2,7 @@
   width: 23px;
   height: 19px;
   background-color: #fff;
-  background-image: url(../../../images/like-button-img-disabled.svg);
+  background-image: url(../../../Vendor/images/like-button-img-disabled.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 22px 19px;
@@ -17,5 +17,5 @@
 }
 
 .cards__like-button:active {
-  background-image: url(../../../images/like-button-img-active.svg);
+  background-image: url(../../../Vendor/images/like-button-img-active.svg);
 }

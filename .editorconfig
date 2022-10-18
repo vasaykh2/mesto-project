@@ -20,3 +20,6 @@ quote_type = single
 trim_trailing_whitespace = false
 [*.tsv]
 indent_style = tab
+
+[{*.json,*.yml}]
+indent_size = 2
