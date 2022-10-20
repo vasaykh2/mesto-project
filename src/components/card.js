@@ -27,11 +27,11 @@ const turgoyakImage = new URL(
 
 const initialCards = [
   {
-    name: 'з. Таганай',
+    name: 'Таганай',
     link: taganayImage,
   },
   {
-    name: 'н.п. Югыд Ва',
+    name: 'Югыд Ва',
     link: yugydImage,
   },
   {
@@ -43,11 +43,11 @@ const initialCards = [
     link: shikhanImage,
   },
   {
-    name: 'р. Чусовая',
+    name: 'Чусовая',
     link: chusovayaImage,
   },
   {
-    name: 'оз. Тургояк',
+    name: 'Тургояк',
     link: turgoyakImage,
   },
 ];

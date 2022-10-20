@@ -62,6 +62,8 @@
               class="form__input form__input_user_name"
               id="user-name"
               required
+              pattern="^[a-zA-Zа-яёА-ЯЁ\s\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="form__input-error user-name-error">ошибка</span>
           </div>
@@ -75,6 +77,8 @@
               class="form__input form__input_user_job"
               id="user-job"
               required
+              pattern="^[a-zA-Zа-яёА-ЯЁ\s\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="form__input-error user-job-error">ошибка</span>
           </div>
@@ -100,6 +104,8 @@
               class="form__input form__input_place_name"
               id="place-name"
               required
+              pattern="^[a-zA-Zа-яёА-ЯЁ\s\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="form__input-error place-name-error">ошибка</span>
           </div>

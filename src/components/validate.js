@@ -1,7 +1,3 @@
-//const formElement = document.querySelector('.form');
-//const formInput = formElement.querySelector('.form__input');
-
-
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add('form__input_type_error');
@@ -17,6 +13,12 @@ const hideInputError = (formElement, inputElement) => {
 };
 
 const checkInputValidity = (formElement, inputElement) => {
+  if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(inputElement.dataset.errorMessage);
+  } else {
+    inputElement.setCustomValidity('');
+  }
+
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
@@ -62,8 +64,4 @@ const enableValidation = () => {
   });
 };
 
-export {
-  enableValidation,
-};
-
-
+export { enableValidation };
