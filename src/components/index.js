@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import { initialCards, addCard } from '../components/card.js';
 import {
   editButton,

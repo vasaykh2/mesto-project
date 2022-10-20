@@ -10,23 +10,21 @@
     <meta name="keywords" content="Россия, Урал, места, фотографии" />
     <meta name="author" content="Вадим Савинов" />
     <title>Место России</title>
+    <!--
     <link rel="stylesheet" href="../src/pages/index.css" />
+    -->
   </head>
 
   <body class="body">
     <div class="page">
       <header class="header">
-        <img
-          src="../src/Vendor/images/logo.svg"
-          alt="Место России"
-          class="header__logo"
-        />
+        <span class="header__logo"></span>
       </header>
 
       <main class="content">
         <section class="profile" aria-label="Профиль">
           <img
-            src="../src/Vendor/images/jacques-yves-cousteau.jpg"
+            src="<%=require('../src/Vendor/images/jacques-yves-cousteau.jpg')%>"
             alt="Жак-Ив Кусто"
             class="profile__avatar"
           />
@@ -142,10 +140,13 @@
         <button type="button" class="cards__delete-button"></button>
       </li>
     </template>
+
+    <!--
     <script type="module" src="../src/components/index.js"></script>
     <script type="module" src="../src/components/card.js"></script>
     <script type="module" src="../src/components/modal.js"></script>
     <script type="module" src="../src/components/validate.js"></script>
     <script type="module" src="../src/components/utils.js"></script>
+    -->
   </body>
 </html>

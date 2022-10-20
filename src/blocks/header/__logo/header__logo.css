@@ -1,5 +1,11 @@
 .header__logo {
   width: 142px;
+  height: 33px;
+  background-image: url(../../../Vendor/images/logo.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+display: inline-block;
 }
 
 @media (max-width: 645px) {
