@@ -4,6 +4,8 @@ import { initialAvatar, addAvatar } from '../components/utils.js';
 
 import { initialCards, addCard } from '../components/card.js';
 
+import { enableValidation } from '../components/validate.js';
+
 import {
   editButton,
   updateFormEditProfile,
@@ -15,6 +17,9 @@ import {
 
 //добавление картинки в аватар профиля
 addAvatar(initialAvatar);
+
+//включение валидации
+enableValidation();
 
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
 editButton.addEventListener('click', (evt) => {
