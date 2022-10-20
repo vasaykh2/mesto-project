@@ -51,33 +51,33 @@
     <section class="popup popup_content_edit-profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form
-          class="form form_content_edit-profile"
-          name="formEdit"
-          novalidate=""
-        >
-          <input
-            type="text"
-            name="userName"
-            minlength="2"
-            maxlength="50"
-            placeholder="Жак-Ив Кусто"
-            class="form__item form__item_user_name"
-            id="user-name"
-            required=""
-          />
-
-          <input
-            type="text"
-            name="userJob"
-            minlength="2"
-            maxlength="50"
-            placeholder="Исследователь океана"
-            class="form__item form__item_user_job"
-            id="user-job"
-            required=""
-          />
-
+        <form class="form form_content_edit-profile" name="formEdit" novalidate>
+          <div class="form__input-wrapper">
+            <input
+              type="text"
+              name="userName"
+              minlength="2"
+              maxlength="50"
+              placeholder="Жак-Ив Кусто"
+              class="form__input form__input_user_name"
+              id="user-name"
+              required
+            />
+            <span class="form__input-error user-name-error">ошибка</span>
+          </div>
+          <div class="form__input-wrapper">
+            <input
+              type="text"
+              name="userJob"
+              minlength="2"
+              maxlength="50"
+              placeholder="Исследователь океана"
+              class="form__input form__input_user_job"
+              id="user-job"
+              required
+            />
+            <span class="form__input-error user-job-error">ошибка</span>
+          </div>
           <button type="submit" class="form__save-button" value="Сохранить">
             Сохранить
           </button>
@@ -89,27 +89,31 @@
     <section class="popup popup_content_add-card">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form class="form form_content_add-card" name="formAdd" novalidate="">
-          <input
-            type="text"
-            name="placeName"
-            minlength="2"
-            maxlength="30"
-            placeholder="Название"
-            class="form__item form__item_place_name"
-            id="place-name"
-            required=""
-          />
-
-          <input
-            type="url"
-            name="placeLink"
-            placeholder="Ссылка на картинку"
-            class="form__item form__item_place_link"
-            id="place-link"
-            required=""
-          />
-
+        <form class="form form_content_add-card" name="formAdd" novalidate>
+          <div class="form__input-wrapper">
+            <input
+              type="text"
+              name="placeName"
+              minlength="2"
+              maxlength="30"
+              placeholder="Название"
+              class="form__input form__input_place_name"
+              id="place-name"
+              required
+            />
+            <span class="form__input-error place-name-error">ошибка</span>
+          </div>
+          <div class="form__input-wrapper">
+            <input
+              type="url"
+              name="placeLink"
+              placeholder="Ссылка на картинку"
+              class="form__input form__input_place_link"
+              id="place-link"
+              required
+            />
+            <span class="form__input-error place-link-error">ошибка</span>
+          </div>
           <button type="submit" class="form__save-button" value="Создать">
             Создать
           </button>

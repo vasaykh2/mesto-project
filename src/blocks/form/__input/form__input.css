@@ -1,4 +1,4 @@
-.form__item {
+.form__input {
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
@@ -15,10 +15,10 @@
   padding: 0 0 8px;
 }
 
-.form__item:invalid {
+.form__input:invalid {
   border-bottom: 1px solid red;
 }
 
-.form__item:valid {
+.form__input:valid {
   border-bottom: 1px solid green;
 }

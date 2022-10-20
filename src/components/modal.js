@@ -17,12 +17,12 @@ const profileJob = profile.querySelector('.profile__job');
 const formEditProfile = popupEditProfile.querySelector(
   '.form_content_edit-profile'
 );
-const inputName = popupEditProfile.querySelector('.form__item_user_name');
-const inputJob = popupEditProfile.querySelector('.form__item_user_job');
+const inputName = popupEditProfile.querySelector('.form__input_user_name');
+const inputJob = popupEditProfile.querySelector('.form__input_user_job');
 const addButton = profile.querySelector('.profile__add-button');
 const formAddCard = popupAddCard.querySelector('.form_content_add-card');
-const inputCardName = popupAddCard.querySelector('.form__item_place_name');
-const inputCardLink = popupAddCard.querySelector('.form__item_place_link');
+const inputCardName = popupAddCard.querySelector('.form__input_place_name');
+const inputCardLink = popupAddCard.querySelector('.form__input_place_link');
 const image = popupImg.querySelector('.popup__image');
 const imageCaption = popupImg.querySelector('.popup__image-caption');
 
