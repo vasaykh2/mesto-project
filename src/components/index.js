@@ -1,6 +1,9 @@
 import '../pages/index.css';
 
+import { initialAvatar, addAvatar } from '../components/utils.js';
+
 import { initialCards, addCard } from '../components/card.js';
+
 import {
   editButton,
   updateFormEditProfile,
@@ -9,6 +12,9 @@ import {
   addButton,
   popupAddCard,
 } from '../components/modal.js';
+
+//добавление картинки в аватар профиля
+addAvatar(initialAvatar);
 
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
 editButton.addEventListener('click', (evt) => {
