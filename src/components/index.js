@@ -11,8 +11,11 @@ import {
   updateFormEditProfile,
   openPopup,
   popupEditProfile,
+  formEditProfile,
   addButton,
   popupAddCard,
+  formAddCard,
+  clearFormInputs,
 } from '../components/modal.js';
 
 //добавление картинки в аватар профиля
@@ -23,12 +26,14 @@ enableValidation();
 
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
 editButton.addEventListener('click', (evt) => {
+  clearFormInputs(formEditProfile)
   updateFormEditProfile();
   openPopup(popupEditProfile);
 });
 
 //обработчик кнопки открытия popup для добавления карточки
 addButton.addEventListener('click', (evt) => {
+  clearFormInputs(formAddCard);
   openPopup(popupAddCard);
 });
 

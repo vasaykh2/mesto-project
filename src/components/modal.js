@@ -1,8 +1,10 @@
 import { addCard } from '../components/card.js';
+import { hideInputError } from '../components/validate.js';
 
 const profile = document.querySelector('.profile');
 const editButton = profile.querySelector('.profile__edit-button');
 const addButton = profile.querySelector('.profile__add-button');
+const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_content_edit-profile');
 const popupAddCard = document.querySelector('.popup_content_add-card');
 const popupImg = document.querySelector('.popup_content_image');
@@ -33,6 +35,15 @@ function closePopup(popup) {
 function updateFormEditProfile() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
+}
+
+//очистка полей формы
+function clearFormInputs(form) {
+  const inputs = Array.from(form.querySelectorAll('.form__input'));
+  inputs.forEach((input) => {
+    input.value = '';
+    hideInputError(form, input);
+  });
 }
 
 //функция submit для формы редактирования профиля
@@ -73,6 +84,25 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
+//обработчик клика на popup (на пустое место)
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popup);
+    }
+  });
+});
+
+//обработчик нажатия "Escape" в модальном окне
+popups.forEach((popup) => {
+  document.addEventListener('keydown', (evt) => {
+    console.log(evt);
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+});
+
 //обработчик submit для формы редактирования профиля
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
@@ -85,6 +115,9 @@ export {
   updateFormEditProfile,
   openPopup,
   popupEditProfile,
+  formEditProfile,
   addButton,
   popupAddCard,
+  formAddCard,
+  clearFormInputs,
 };
