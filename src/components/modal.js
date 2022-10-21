@@ -1,28 +1,21 @@
 import { addCard } from '../components/card.js';
 
 const profile = document.querySelector('.profile');
-
 const editButton = profile.querySelector('.profile__edit-button');
-
+const addButton = profile.querySelector('.profile__add-button');
 const popupEditProfile = document.querySelector('.popup_content_edit-profile');
-
 const popupAddCard = document.querySelector('.popup_content_add-card');
-
 const popupImg = document.querySelector('.popup_content_image');
 // находим все крестики проекта по универсальному селектору
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__job');
-
-const formEditProfile = popupEditProfile.querySelector(
-  '.form_content_edit-profile'
-);
-const inputName = popupEditProfile.querySelector('.form__input_user_name');
-const inputJob = popupEditProfile.querySelector('.form__input_user_job');
-const addButton = profile.querySelector('.profile__add-button');
-const formAddCard = popupAddCard.querySelector('.form_content_add-card');
-const inputCardName = popupAddCard.querySelector('.form__input_place_name');
-const inputCardLink = popupAddCard.querySelector('.form__input_place_link');
+const formEditProfile = document.forms.formEdit;
+const inputName = formEditProfile.elements.userName;
+const inputJob = formEditProfile.elements.userJob;
+const formAddCard = document.forms.formAdd;
+const inputCardName = formAddCard.elements.placeName;
+const inputCardLink = formAddCard.elements.placeLink;
 const image = popupImg.querySelector('.popup__image');
 const imageCaption = popupImg.querySelector('.popup__image-caption');
 
