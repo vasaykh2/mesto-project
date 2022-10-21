@@ -8,11 +8,11 @@
 
 **Интро**
 
-Это продолжение студенческого проекта Yandex-Практикума курса web-разработки+ о замечательных местах России. На третьем спринте в проект добавлена функциональность.
+Это продолжение студенческого проекта Yandex-Практикума курса web-разработки+ о замечательных местах России. На текущем этапе в проект добавлены улудшения по концепции UX и сборка кода с помощью Webpack.
 
 **Методы**
 
-Сайт выполнен по макетам в Figma. https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1 и https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1.
+Сайт выполнен по макетам в Figma. https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1, https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1 и https://code.s3.yandex.net/web-developer/project-6/JavaScript.Sprint-6.fig.
 
 Таблицы стилей .css распределены в файловой структуре каталога blocks согласно методологии БЭМ Nested.
 
@@ -48,7 +48,7 @@
 
 Файл .editorconfig содержит установки для приложения VS Code.
 
-Файлы package.json и webpack.config.js содержат настройки среды Webpack.
+Файлы package.json и webpack.config.js содержат скрипты для настройки среды Webpack.
 
 В файле .gitignore прописаны строки: node_modules и dist для push на GitHub.
 
