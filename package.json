@@ -24,7 +24,6 @@
 		"stylelint": "stylelint \"src/**/*.css\"",
 		"stylelint:fixed": "stylelint \"src/**/*.css\" --fix",
 		"test": "npm run editorconfig && npm run stylelint",
-		"prepare": "husky install",
 		"staged": "lint-staged",
 		"build": "webpack --mode production",
 		"dev": "webpack serve",

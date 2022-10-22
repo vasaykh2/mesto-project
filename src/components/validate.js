@@ -64,4 +64,4 @@ const enableValidation = () => {
   });
 };
 
-export { enableValidation, hideInputError };
+export { enableValidation, hideInputError, toggleButtonState };
