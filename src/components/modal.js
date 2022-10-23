@@ -1,5 +1,5 @@
 import { addCard } from '../components/card.js';
-import { hideInputError } from '../components/validate.js';
+import { settings, hideInputError } from '../components/validate.js';
 
 const profile = document.querySelector('.profile');
 const editButton = profile.querySelector('.profile__edit-button');
@@ -39,10 +39,10 @@ function updateFormEditProfile() {
 
 //очистка полей формы
 function clearFormInputs(form) {
-  const inputs = Array.from(form.querySelectorAll('.form__input'));
+  const inputs = Array.from(form.querySelectorAll(settings.input));
   inputs.forEach((input) => {
     input.value = '';
-    hideInputError(form, input);
+    hideInputError(form, input, settings);
   });
 }
 

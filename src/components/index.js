@@ -4,7 +4,7 @@ import { initialAvatar, addAvatar } from '../components/utils.js';
 
 import { initialCards, addCard } from '../components/card.js';
 
-import { enableValidation, toggleButtonState } from '../components/validate.js';
+import { settings, enableValidation, toggleButtonState } from '../components/validate.js';
 
 import {
   editButton,
@@ -22,15 +22,15 @@ import {
 addAvatar(initialAvatar);
 
 //включение валидации
-enableValidation();
+enableValidation(settings);
 
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
 editButton.addEventListener('click', (evt) => {
   clearFormInputs(formEditProfile);
   updateFormEditProfile();
-  const buttonElement = formEditProfile.querySelector('.form__save-button');
+  const buttonElement = formEditProfile.querySelector(settings.saveButton);
   buttonElement.disabled = true;
-  buttonElement.classList.add('form__save-button_inactive');
+  buttonElement.classList.add(settings.saveButtonInactive);
   openPopup(popupEditProfile);
 });
 
@@ -38,8 +38,8 @@ editButton.addEventListener('click', (evt) => {
 addButton.addEventListener('click', (evt) => {
   clearFormInputs(formAddCard);
   const inputList = Array.from(formAddCard);
-  const buttonElement = formAddCard.querySelector('.form__save-button');
-  toggleButtonState(inputList, buttonElement);
+  const buttonElement = formAddCard.querySelector(settings.saveButton);
+  toggleButtonState(inputList, buttonElement, settings);
   openPopup(popupAddCard);
 });
 
