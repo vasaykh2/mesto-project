@@ -62,7 +62,7 @@ const ChartCard = (function () {
     element
       .querySelector('.cards__delete-button')
       .addEventListener('click', (evt) => {
-        evt.target.parentNode.remove();
+        evt.target.closest('.cards__item').remove();
       });
   }
 
