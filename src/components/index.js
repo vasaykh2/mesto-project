@@ -25,7 +25,7 @@ addAvatar(initialAvatar);
 enableValidation(settings);
 
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
-editButton.addEventListener('click', (evt) => {
+editButton.addEventListener('click', () => {
   clearFormInputs(formEditProfile);
   updateFormEditProfile();
   const buttonElement = formEditProfile.querySelector(settings.saveButton);
@@ -35,7 +35,7 @@ editButton.addEventListener('click', (evt) => {
 });
 
 //обработчик кнопки открытия popup для добавления карточки
-addButton.addEventListener('click', (evt) => {
+addButton.addEventListener('click', () => {
   clearFormInputs(formAddCard);
   const inputList = Array.from(formAddCard);
   const buttonElement = formAddCard.querySelector(settings.saveButton);

@@ -8,8 +8,6 @@ const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_content_edit-profile');
 const popupAddCard = document.querySelector('.popup_content_add-card');
 const popupImg = document.querySelector('.popup_content_image');
-// находим все крестики проекта по универсальному селектору
-const closeButtons = document.querySelectorAll('.popup__close-button');
 const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__job');
 const formEditProfile = document.forms.formEdit;
@@ -59,7 +57,7 @@ function handleProfileFormSubmit(evt) {
 //функция открытия popup-img карточки
 function openPopupImageCard(element, item) {
   //обработчик клика на картинку карточки и открытия popup
-  element.querySelector('.cards__image').addEventListener('click', (evt) => {
+  element.querySelector('.cards__image').addEventListener('click', () => {
     image.src = item.link;
     image.alt = item.name;
     imageCaption.textContent = item.name;

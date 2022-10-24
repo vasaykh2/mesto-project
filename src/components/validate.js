@@ -29,7 +29,12 @@ const checkInputValidity = (formElement, inputElement, settings) => {
   }
 
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      settings
+    );
   } else {
     hideInputError(formElement, inputElement, settings);
   }
@@ -60,6 +65,12 @@ const setEventListeners = (formElement, settings) => {
       checkInputValidity(formElement, inputElement, settings);
       toggleButtonState(inputList, buttonElement, settings);
     });
+  });
+  formElement.addEventListener('reset', () => {
+    // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
+    setTimeout(() => {
+      toggleButtonState(inputList, buttonElement, settings);
+    }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
   });
 };
 
