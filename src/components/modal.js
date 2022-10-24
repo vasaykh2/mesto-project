@@ -24,15 +24,15 @@ const imageCaption = popupImg.querySelector('.popup__image-caption');
 //открытие popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  activeHandleFreePopup (popup);
-  activeHandleEscapePopup (popup);
+  document.addEventListener('keydown', closeByEscape);
+  popup.addEventListener('click', closeByEmptiness);
 }
 
 //закрытие popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  inactiveHandleFreePopup (popup);
-  inactiveHandleEscapePopup (popup);
+  document.removeEventListener('keydown', closeByEscape);
+  popup.removeEventListener('click', closeByEmptiness);
 }
 
 //обновление полей формы редактю профиля при открытии popup
@@ -81,42 +81,19 @@ function handleCardFormSubmit(evt) {
 }
 
 //функция активации обработки клика на popup (на пустое место)
-function activeHandleFreePopup (popup) {
-  popup.addEventListener('click', (evt) => {
-    if (evt.target === evt.currentTarget) {
-      closePopup(popup);
+function closeByEmptiness (evt) {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.target === evt.currentTarget) {
+      closePopup(openedPopup);
     }
-})
-};
+}
 
 //функция активации обработки нажатия "Escape" в модальном окне
-function activeHandleEscapePopup (popup) {
-  document.addEventListener('keydown', (evt) => {
-    console.log(evt);
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
-};
-
-//функция деактивации обработки клика на popup (на пустое место)
-function inactiveHandleFreePopup (popup) {
-    popup.removeEventListener('click', (evt) => {
-      if (evt.target === evt.currentTarget) {
-        closePopup(popup);
-      }
-    });
-  };
-
-  //функция деактивации обработки нажатия "Escape" в модальном окне
-  function inactiveHandleEscapePopup (popup) {
-    document.removeEventListener('keydown', (evt) => {
-      console.log(evt);
-      if (evt.key === 'Escape') {
-        closePopup(popup);
-      }
-    });
-  };
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');closePopup(openedPopup);
+  }
+}
 
 //обработчик всех кнопок закрытия popup (крестиков)
 closeButtons.forEach((button) => {
