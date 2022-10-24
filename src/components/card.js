@@ -1,4 +1,4 @@
-import { imageCard } from '../components/modal.js';
+import { openPopupImageCard } from '../components/modal.js';
 
 const taganayImage = new URL(
   '../Vendor/images/taganay-national-park.jpg',
@@ -88,7 +88,7 @@ const ChartCard = (function () {
 
     likeCard(cardElement);
     delCard(cardElement);
-    imageCard(cardElement, item);
+    openPopupImageCard(cardElement, item);
 
     return cardElement;
   }

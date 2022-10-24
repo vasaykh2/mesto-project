@@ -59,7 +59,7 @@ function handleProfileFormSubmit(evt) {
 }
 
 //функция открытия popup-img карточки
-function imageCard(element, item) {
+function openPopupImageCard(element, item) {
   //обработчик клика на картинку карточки и открытия popup
   element.querySelector('.cards__image').addEventListener('click', (evt) => {
     image.src = item.link;
@@ -133,7 +133,7 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 formAddCard.addEventListener('submit', handleCardFormSubmit);
 
 export {
-  imageCard,
+  openPopupImageCard,
   editButton,
   updateFormEditProfile,
   openPopup,
