@@ -25,14 +25,12 @@ const imageCaption = popupImg.querySelector('.popup__image-caption');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
-  popup.addEventListener('click', closeByEmptiness);
 }
 
 //закрытие popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEscape);
-  popup.removeEventListener('click', closeByEmptiness);
 }
 
 //обновление полей формы редактю профиля при открытии popup
@@ -80,27 +78,24 @@ function handleCardFormSubmit(evt) {
   closePopup(popupAddCard);
 }
 
-//функция активации обработки клика на popup (на пустое место)
-function closeByEmptiness (evt) {
-  const openedPopup = document.querySelector('.popup_opened');
-  if (evt.target === evt.currentTarget) {
-      closePopup(openedPopup);
-    }
-}
-
 //функция активации обработки нажатия "Escape" в модальном окне
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');closePopup(openedPopup);
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 
-//обработчик всех кнопок закрытия popup (крестиков)
-closeButtons.forEach((button) => {
-  // поиск ближайшего (родительского) к крестику popup
-  const popup = button.closest('.popup');
-  // обработчик закрытия на крестик
-  button.addEventListener('click', () => closePopup(popup));
+//обработчик нажатия на оверлеи или крестики всех popup, когда они открыты
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close-button')) {
+      closePopup(popup);
+    }
+  });
 });
 
 //обработчик submit для формы редактирования профиля
