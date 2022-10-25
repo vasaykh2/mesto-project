@@ -36,7 +36,6 @@ editButton.addEventListener('click', () => {
 
 //обработчик кнопки открытия popup для добавления карточки
 addButton.addEventListener('click', () => {
-  clearFormInputs(formAddCard);
   const inputList = Array.from(formAddCard);
   const buttonElement = formAddCard.querySelector(settings.saveButton);
   toggleButtonState(inputList, buttonElement, settings);
