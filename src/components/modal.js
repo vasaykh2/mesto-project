@@ -1,6 +1,21 @@
 import { addCard } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
 
+export {
+  openPopupImageCard,
+  editButton,
+  updateFormEditProfile,
+  openPopup,
+  popupEditProfile,
+  profileName,
+  profileJob,
+  formEditProfile,
+  addButton,
+  popupAddCard,
+  formAddCard,
+  clearFormInputs,
+};
+
 const profile = document.querySelector('.profile');
 const editButton = profile.querySelector('.profile__edit-button');
 const addButton = profile.querySelector('.profile__add-button');
@@ -102,15 +117,4 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 //обработчик submit для формы добавления карточки
 formAddCard.addEventListener('submit', handleCardFormSubmit);
 
-export {
-  openPopupImageCard,
-  editButton,
-  updateFormEditProfile,
-  openPopup,
-  popupEditProfile,
-  formEditProfile,
-  addButton,
-  popupAddCard,
-  formAddCard,
-  clearFormInputs,
-};
+

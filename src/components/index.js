@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import { addAvatar } from '../components/utils.js';
+import { initialAvatar, initialUser } from '../components/utils.js';
 
 import { addCard } from '../components/card.js';
 
@@ -35,9 +35,12 @@ initAPI(apiSettings, (api, id) => {
 });
 */
 
-//добавление картинки в аватар профиля
+//инициация из сервера данных в профиль пользователя
 getUserMe(apiSettings).then((result) => {
-  addAvatar(result);
+  //добавление картинки в аватар профиля
+  initialAvatar(result);
+  //добавление name и about пользователя
+  initialUser(result);
 });
 
 //включение валидации
@@ -61,7 +64,7 @@ addButton.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 
-//добавление 6 карточек при загрузке страницы
+//инициация из сервера карточек при загрузке страницы
 initialCards(apiSettings).then((result) => {
   let i = 0;
   for (i in result) {

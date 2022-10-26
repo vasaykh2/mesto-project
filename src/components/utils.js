@@ -1,24 +1,23 @@
-const cousteauImage = new URL(
-  '../Vendor/images/jacques-yves-cousteau.jpg',
-  import.meta.url
-);
+import { profileName, profileJob } from '../components/modal.js';
 
-const initialAvatar = {
-  name: 'Жак-Ив Кусто',
-  link: cousteauImage,
-};
-
-const ChartAvatar = (function () {
+const ChartProfile = (function () {
   const avatarImage = document.querySelector('.profile__avatar');
   return {
     //функция добавления атрибутов в img аватара
-    addAvatar: function (item) {
+    initialAvatar: function (item) {
       avatarImage.src = item.avatar;
       avatarImage.alt = item.name;
+    },
+    //функция добавления атрибутов в name и about пользователя
+    initialUser: function (item) {
+      profileName.textContent = item.name;
+      profileJob.textContent = item.about;
     },
   };
 })();
 
-const addAvatar = ChartAvatar.addAvatar;
+const initialAvatar = ChartProfile.initialAvatar;
+const initialUser = ChartProfile.initialUser;
 
-export { addAvatar, };
+
+export { initialAvatar, initialUser, };
