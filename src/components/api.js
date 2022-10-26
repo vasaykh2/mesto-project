@@ -1,4 +1,4 @@
-export { getUserMe, initialCards, editProfile, sendCard, };
+export { getUserMe, initialCards, editProfile, sendCard, deleteCard };
 
 /*
 async function initAPI(settings, cb) {
@@ -25,7 +25,6 @@ async function getUserMe(settings) {
     return Promise.reject(`Ошибка: ${res.status}`);
   });
 }
-
 
 //функция запроса параметров карточки из сервера
 async function initialCards(settings) {
@@ -75,6 +74,24 @@ async function sendCard(settings, name, link) {
       link: link,
     }),
   }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+}
+
+//функция запроса удаления карточки из сервера
+async function deleteCard(settings, cardId) {
+  return fetch(
+    `https://nomoreparties.co/v1/${settings.cohortId}/cards/${cardId}`,
+    {
+      method: 'DELETE',
+      headers: {
+        authorization: settings.token,
+      },
+    }
+  ).then((res) => {
     if (res.ok) {
       return res.json();
     }

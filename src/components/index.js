@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import { initialAvatar, initialUser, getIdUser, user, } from '../components/utils.js';
+import { initialAvatar, initialUser, } from '../components/utils.js';
 
 import { addCard } from '../components/card.js';
 
@@ -26,7 +26,10 @@ import {
 
 import { getUserMe, initialCards } from '../components/api.js';
 
-export const apiSettings = {
+export { apiSettings, }
+
+
+const apiSettings = {
   cohortId: 'plus-cohort-16',
   token: '9656253c-3dfe-4770-aeca-f882bc2dc634',
 };
@@ -43,8 +46,8 @@ getUserMe(apiSettings).then((result) => {
   initialAvatar(result);
   //добавление name и about пользователя
   initialUser(result);
+  //console.log(result);
 });
-
 
 //включение валидации
 enableValidation(settings);

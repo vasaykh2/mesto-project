@@ -4,11 +4,13 @@ import { editProfile, getUserMe, sendCard } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 import { initialAvatar, initialUser } from '../components/utils.js';
 
+
 export {
   openPopupImageCard,
   editButton,
   updateFormEditProfile,
   openPopup,
+  closePopup,
   popupEditProfile,
   profileName,
   profileJob,
@@ -86,10 +88,8 @@ function handleCardFormSubmit(evt) {
   //отправка новой карточки на сервер
   sendCard(apiSettings, item.name, item.link).then((result) => {
     console.log(result);
+    location.reload();
   });
-  addCard(item);
-  evt.target.reset();
-  closePopup(popupAddCard);
 }
 
 //функция открытия popup-img карточки

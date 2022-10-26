@@ -18,6 +18,6 @@ const ChartProfile = (function () {
   };
 })();
 
+
 const initialAvatar = ChartProfile.initialAvatar;
 const initialUser = ChartProfile.initialUser;
-
