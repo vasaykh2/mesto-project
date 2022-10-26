@@ -26,6 +26,7 @@ async function getUserMe(settings) {
   });
 }
 
+
 //функция запроса параметров карточки из сервера
 async function initialCards(settings) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
@@ -116,12 +117,3 @@ async function sendCard(settings, name, link) {
 
 //{name: 'Jacques Cousteau', about: 'Sailor, researcher', avatar: 'https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg', _id: 'b928463b11692c2e10ed9588', cohort: 'plus-cohort-16'}
 //I'm #39
-/*
-.then(res => {
-  if (res.ok) {
-  return res.json();
-  }
-  // если ошибка, отклоняем промис
-  return Promise.reject(`Ошибка: ${res.status}`);
-  });
-*/

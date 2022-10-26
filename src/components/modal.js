@@ -1,6 +1,6 @@
 import { addCard } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
-import { editProfile, getUserMe, sendCard, } from '../components/api.js';
+import { editProfile, getUserMe, sendCard } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 import { initialAvatar, initialUser } from '../components/utils.js';
 
@@ -73,7 +73,7 @@ function handleProfileFormSubmit(evt) {
   editProfile(apiSettings, inputName.value, inputJob.value).then((result) => {
     console.log(result);
   });
-  initialUser({name: inputName.value, about: inputJob.value});
+  initialUser({ name: inputName.value, about: inputJob.value });
   closePopup(popupEditProfile);
 }
 
@@ -122,5 +122,3 @@ popups.forEach((popup) => {
     }
   });
 });
-
-

@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import { initialAvatar, initialUser } from '../components/utils.js';
+import { initialAvatar, initialUser, getIdUser, user, } from '../components/utils.js';
 
 import { addCard } from '../components/card.js';
 
@@ -44,6 +44,7 @@ getUserMe(apiSettings).then((result) => {
   //добавление name и about пользователя
   initialUser(result);
 });
+
 
 //включение валидации
 enableValidation(settings);

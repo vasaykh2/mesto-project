@@ -1,4 +1,6 @@
 import { openPopupImageCard } from '../components/modal.js';
+import { getUserMe } from '../components/api.js';
+import { apiSettings } from '../components/index.js';
 
 const ChartCard = (function () {
   const cardContainer = document.querySelector('.cards');
@@ -33,11 +35,20 @@ const ChartCard = (function () {
     cardsImage.src = item.link;
     cardsImage.alt = item.name;
     cardElement.querySelector('.cards__name').textContent = item.name;
-    cardElement.querySelector('.cards__like-counter').textContent = item.likes.length;
+    cardElement.querySelector('.cards__like-counter').textContent =
+      item.likes.length;
 
     likeCard(cardElement);
     delCard(cardElement);
     openPopupImageCard(cardElement, item);
+
+    //сравнение ip с пользовательским и добавление значка delete в карточку
+    getUserMe(apiSettings).then((result) => {
+      if (item.owner._id === result._id) {
+        cardElement.querySelector('.cards__delete-button').style.display =
+          'block';
+      }
+    });
 
     return cardElement;
   }

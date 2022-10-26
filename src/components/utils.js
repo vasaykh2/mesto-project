@@ -1,6 +1,6 @@
 import { profileName, profileJob } from '../components/modal.js';
 
-export { initialAvatar, initialUser };
+export { initialAvatar, initialUser, };
 
 const ChartProfile = (function () {
   const avatarImage = document.querySelector('.profile__avatar');
@@ -20,3 +20,4 @@ const ChartProfile = (function () {
 
 const initialAvatar = ChartProfile.initialAvatar;
 const initialUser = ChartProfile.initialUser;
+
