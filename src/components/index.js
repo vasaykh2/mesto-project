@@ -18,6 +18,22 @@ import {
   clearFormInputs,
 } from '../components/modal.js';
 
+import { getCards, } from '../components/api.js';
+
+const apiSettings = {
+  cohortId: 'plus-cohort-16',
+  token: '9656253c-3dfe-4770-aeca-f882bc2dc634',
+
+};
+
+/*
+initAPI(apiSettings, (api, id) => {
+  //дальше все что нужно инициализируем, апи в себе хранит все что нужно просто используем
+});
+*/
+
+
+
 //добавление картинки в аватар профиля
 addAvatar(initialAvatar);
 
@@ -43,6 +59,11 @@ addButton.addEventListener('click', () => {
 });
 
 //добавление 6 карточек при загрузке страницы
-initialCards.forEach((item) => {
-  addCard(item);
+
+
+getCards(apiSettings).then((result) => {
+  let i = 0;
+  for (i in result) {
+    addCard(result[i]);
+  }
 });
