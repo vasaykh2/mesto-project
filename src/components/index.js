@@ -20,11 +20,12 @@ import {
   popupAddCard,
   formAddCard,
   clearFormInputs,
+  handleProfileFormSubmit,
 } from '../components/modal.js';
 
 import { getUserMe, initialCards } from '../components/api.js';
 
-const apiSettings = {
+export const apiSettings = {
   cohortId: 'plus-cohort-16',
   token: '9656253c-3dfe-4770-aeca-f882bc2dc634',
 };
@@ -71,3 +72,6 @@ initialCards(apiSettings).then((result) => {
     addCard(result[i]);
   }
 });
+
+//обработчик submit для формы редактирования профиля
+formEditProfile.addEventListener('submit', handleProfileFormSubmit);

@@ -1,5 +1,8 @@
 import { addCard } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
+import { editProfile, getUserMe } from '../components/api.js';
+import { apiSettings } from '../components/index.js';
+import { initialAvatar, initialUser } from '../components/utils.js';
 
 export {
   openPopupImageCard,
@@ -14,6 +17,7 @@ export {
   popupAddCard,
   formAddCard,
   clearFormInputs,
+  handleProfileFormSubmit,
 };
 
 const profile = document.querySelector('.profile');
@@ -64,8 +68,11 @@ function clearFormInputs(form) {
 //функция submit для формы редактирования профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value;
+  //запрос на сервер обновления name и about профиля пользователя
+  editProfile(apiSettings, inputName.value, inputJob.value).then((result) => {
+    console.log(result);
+  });
+  initialUser({name: inputName.value, about: inputJob.value});
   closePopup(popupEditProfile);
 }
 
@@ -111,10 +118,5 @@ popups.forEach((popup) => {
   });
 });
 
-//обработчик submit для формы редактирования профиля
-formEditProfile.addEventListener('submit', handleProfileFormSubmit);
-
 //обработчик submit для формы добавления карточки
 formAddCard.addEventListener('submit', handleCardFormSubmit);
-
-

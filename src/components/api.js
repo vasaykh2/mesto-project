@@ -1,4 +1,4 @@
-export { getUserMe, initialCards, };
+export { getUserMe, initialCards, editProfile };
 
 /*
 async function initAPI(settings, cb) {
@@ -10,23 +10,62 @@ async function initAPI(settings, cb) {
 }
 */
 
+//функция запроса всех параметров пользователя в профиле
 async function getUserMe(settings) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/users/me`, {
     method: 'GET',
     headers: {
       authorization: settings.token,
     },
-  }).then((res) => res.json());
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    // если ошибка, отклоняем промис
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
 }
 
+//функция запроса параметров карточки из сервера
 async function initialCards(settings) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
     method: 'GET',
     headers: {
       authorization: settings.token,
     },
-  }).then((res) => res.json());
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
 }
+
+//функция запроса на обновление параметров пользователя в профиле на сервере
+async function editProfile(settings, name, about) {
+  return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      authorization: settings.token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name,
+      about: about,
+    })
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    // если ошибка, отклоняем промис
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+}
+
+
+
+
+
 
 
 /*
@@ -61,21 +100,6 @@ async function initialCards(settings) {
   }
 ]
 */
-/*
-function getUser() {
-  return fetch('https://nomoreparties.co/v1/plus-cohort-16/users/me', {
-    method: 'GET',
-    headers: {
-      authorization: '9656253c-3dfe-4770-aeca-f882bc2dc634',
-    },
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result);
-    });
-}
-getUser();
-//Используйте свойства name, about и avatar в соответствующих элементах шапки страницы. Свойство _id — идентификатор пользователя, в данном случае вашего.
 
 //{name: 'Jacques Cousteau', about: 'Sailor, researcher', avatar: 'https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg', _id: 'b928463b11692c2e10ed9588', cohort: 'plus-cohort-16'}
 //I'm #39
