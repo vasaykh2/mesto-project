@@ -1,57 +1,5 @@
 import { openPopupImageCard } from '../components/modal.js';
 
-const taganayImage = new URL(
-  '../Vendor/images/taganay-national-park.jpg',
-  import.meta.url
-);
-const yugydImage = new URL(
-  '../Vendor/images/yugyd-va-national-park.jpg',
-  import.meta.url
-);
-const manpupunerImage = new URL(
-  '../Vendor/images/manpupuner-plateau.jpg',
-  import.meta.url
-);
-const shikhanImage = new URL(
-  '../Vendor/images/lake-arakul-and-arakul-shikhan.jpg',
-  import.meta.url
-);
-const chusovayaImage = new URL(
-  '../Vendor/images/chusovaya-river.jpg',
-  import.meta.url
-);
-const turgoyakImage = new URL(
-  '../Vendor/images/lake-turgoyak.jpg',
-  import.meta.url
-);
-
-const initialCards = [
-  {
-    name: 'Таганай',
-    link: taganayImage,
-  },
-  {
-    name: 'Югыд Ва',
-    link: yugydImage,
-  },
-  {
-    name: 'Мань-Пупу-нёр',
-    link: manpupunerImage,
-  },
-  {
-    name: 'гора Шихан',
-    link: shikhanImage,
-  },
-  {
-    name: 'Чусовая',
-    link: chusovayaImage,
-  },
-  {
-    name: 'Тургояк',
-    link: turgoyakImage,
-  },
-];
-
 const ChartCard = (function () {
   const cardContainer = document.querySelector('.cards');
   const cardTemplate = document.querySelector('#card-template').content;

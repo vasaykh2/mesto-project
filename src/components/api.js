@@ -1,4 +1,4 @@
-export { getUserMe, initialCards, editProfile };
+export { getUserMe, initialCards, editProfile, sendCard, };
 
 /*
 async function initAPI(settings, cb) {
@@ -10,7 +10,7 @@ async function initAPI(settings, cb) {
 }
 */
 
-//функция запроса всех параметров пользователя в профиле
+//функция запроса всех параметров пользователя профиля из сервера
 async function getUserMe(settings) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/users/me`, {
     method: 'GET',
@@ -47,26 +47,39 @@ async function editProfile(settings, name, about) {
     method: 'PATCH',
     headers: {
       authorization: settings.token,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       name: name,
       about: about,
-    })
+    }),
   }).then((res) => {
     if (res.ok) {
       return res.json();
     }
-    // если ошибка, отклоняем промис
     return Promise.reject(`Ошибка: ${res.status}`);
   });
 }
 
-
-
-
-
-
+//функция запроса на отправку новой карточки на сервере
+async function sendCard(settings, name, link) {
+  return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
+    method: 'POST',
+    headers: {
+      authorization: settings.token,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: name,
+      link: link,
+    }),
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+}
 
 /*
 [

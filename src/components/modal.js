@@ -1,6 +1,6 @@
 import { addCard } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
-import { editProfile, getUserMe } from '../components/api.js';
+import { editProfile, getUserMe, sendCard, } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 import { initialAvatar, initialUser } from '../components/utils.js';
 
@@ -18,6 +18,7 @@ export {
   formAddCard,
   clearFormInputs,
   handleProfileFormSubmit,
+  handleCardFormSubmit,
 };
 
 const profile = document.querySelector('.profile');
@@ -50,7 +51,7 @@ function closePopup(popup) {
   document.removeEventListener('keydown', closeByEscape);
 }
 
-//обновление полей формы редактю профиля при открытии popup
+//обновление полей формы редактора профиля при открытии popup
 function updateFormEditProfile() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
@@ -76,6 +77,21 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
+//функция submit для формы добавления карточки
+function handleCardFormSubmit(evt) {
+  evt.preventDefault();
+  const item = {};
+  item.name = inputCardName.value;
+  item.link = inputCardLink.value;
+  //отправка новой карточки на сервер
+  sendCard(apiSettings, item.name, item.link).then((result) => {
+    console.log(result);
+  });
+  addCard(item);
+  evt.target.reset();
+  closePopup(popupAddCard);
+}
+
 //функция открытия popup-img карточки
 function openPopupImageCard(element, item) {
   //обработчик клика на картинку карточки и открытия popup
@@ -85,17 +101,6 @@ function openPopupImageCard(element, item) {
     imageCaption.textContent = item.name;
     openPopup(popupImg);
   });
-}
-
-//функция submit для формы добавления карточки
-function handleCardFormSubmit(evt) {
-  evt.preventDefault();
-  const item = {};
-  item.name = inputCardName.value;
-  item.link = inputCardLink.value;
-  addCard(item);
-  evt.target.reset();
-  closePopup(popupAddCard);
 }
 
 //функция активации обработки нажатия "Escape" в модальном окне
@@ -118,5 +123,4 @@ popups.forEach((popup) => {
   });
 });
 
-//обработчик submit для формы добавления карточки
-formAddCard.addEventListener('submit', handleCardFormSubmit);
+

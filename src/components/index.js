@@ -21,6 +21,7 @@ import {
   formAddCard,
   clearFormInputs,
   handleProfileFormSubmit,
+  handleCardFormSubmit,
 } from '../components/modal.js';
 
 import { getUserMe, initialCards } from '../components/api.js';
@@ -75,3 +76,6 @@ initialCards(apiSettings).then((result) => {
 
 //обработчик submit для формы редактирования профиля
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
+
+//обработчик submit для формы добавления карточки
+formAddCard.addEventListener('submit', handleCardFormSubmit);
