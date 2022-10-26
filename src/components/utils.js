@@ -13,7 +13,7 @@ const ChartAvatar = (function () {
   return {
     //функция добавления атрибутов в img аватара
     addAvatar: function (item) {
-      avatarImage.src = item.link;
+      avatarImage.src = item.avatar;
       avatarImage.alt = item.name;
     },
   };
@@ -21,4 +21,4 @@ const ChartAvatar = (function () {
 
 const addAvatar = ChartAvatar.addAvatar;
 
-export { initialAvatar, addAvatar };
+export { addAvatar, };

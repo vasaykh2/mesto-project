@@ -103,4 +103,4 @@ const ChartCard = (function () {
 
 const addCard = ChartCard.addCard;
 
-export { initialCards, addCard };
+export { addCard };

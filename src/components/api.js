@@ -1,9 +1,4 @@
-export { getCards };
-
-const apiSettings = {
-  cohortId: 'plus-cohort-16',
-  token: '9656253c-3dfe-4770-aeca-f882bc2dc634',
-};
+export { getUserMe, initialCards, };
 
 /*
 async function initAPI(settings, cb) {
@@ -15,9 +10,16 @@ async function initAPI(settings, cb) {
 }
 */
 
-import { initialCards, addCard } from '../components/card.js';
+async function getUserMe(settings) {
+  return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/users/me`, {
+    method: 'GET',
+    headers: {
+      authorization: settings.token,
+    },
+  }).then((res) => res.json());
+}
 
-async function getCards(settings, cb) {
+async function initialCards(settings) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
     method: 'GET',
     headers: {

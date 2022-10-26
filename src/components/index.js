@@ -1,10 +1,14 @@
 import '../pages/index.css';
 
-import { initialAvatar, addAvatar } from '../components/utils.js';
+import { addAvatar } from '../components/utils.js';
 
-import { initialCards, addCard } from '../components/card.js';
+import { addCard } from '../components/card.js';
 
-import { settings, enableValidation, toggleButtonState } from '../components/validate.js';
+import {
+  settings,
+  enableValidation,
+  toggleButtonState,
+} from '../components/validate.js';
 
 import {
   editButton,
@@ -18,12 +22,11 @@ import {
   clearFormInputs,
 } from '../components/modal.js';
 
-import { getCards, } from '../components/api.js';
+import { getUserMe, initialCards } from '../components/api.js';
 
 const apiSettings = {
   cohortId: 'plus-cohort-16',
   token: '9656253c-3dfe-4770-aeca-f882bc2dc634',
-
 };
 
 /*
@@ -32,10 +35,10 @@ initAPI(apiSettings, (api, id) => {
 });
 */
 
-
-
 //добавление картинки в аватар профиля
-addAvatar(initialAvatar);
+getUserMe(apiSettings).then((result) => {
+  addAvatar(result);
+});
 
 //включение валидации
 enableValidation(settings);
@@ -59,9 +62,7 @@ addButton.addEventListener('click', () => {
 });
 
 //добавление 6 карточек при загрузке страницы
-
-
-getCards(apiSettings).then((result) => {
+initialCards(apiSettings).then((result) => {
   let i = 0;
   for (i in result) {
     addCard(result[i]);
