@@ -1,0 +1,10 @@
+.cards__like-wrapper {
+  width: 23px;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3px;
+}

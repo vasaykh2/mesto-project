@@ -71,7 +71,8 @@ initialCards(apiSettings).then((result) => {
   let i = 0;
   for (i in result) {
     addCard(result[i]);
-  }
+  };
+  console.log(result);
 });
 
 //обработчик submit для формы редактирования профиля

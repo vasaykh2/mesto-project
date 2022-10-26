@@ -33,6 +33,7 @@ const ChartCard = (function () {
     cardsImage.src = item.link;
     cardsImage.alt = item.name;
     cardElement.querySelector('.cards__name').textContent = item.name;
+    cardElement.querySelector('.cards__like-counter').textContent = item.likes.length;
 
     likeCard(cardElement);
     delCard(cardElement);
