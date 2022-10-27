@@ -36,16 +36,63 @@ const ChartCard = (function () {
 
     //функция liked карточки
     function likeCard(element) {
-      //обработчик кнопки liked
+      getUserMe(apiSettings).then((result) => {
+        //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
+        let j = 0;
+        for (j in item.likes) {
+          if (item.likes[j]._id === result._id) {
+            document
+              .getElementById(`${item._id}`)
+              .querySelector('.cards__like-button')
+              .classList.add('cards__like-button_liked');
+
+              //обработчик кнопки liked
       element
-        .querySelector('.cards__like-button')
-        .addEventListener('click', (evt) => {
-          putLike(apiSettings, cardId).then(() => {
-            //console.log(result);
-            evt.target.classList.toggle('cards__like-button_liked');
-            location.reload();
-          });
+      .querySelector('.cards__like-button')
+      .addEventListener('click', (evt) => {
+        deleteLike(apiSettings, cardId).then(() => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
         });
+      });
+          } else {
+          //обработчик кнопки liked
+      element
+      .querySelector('.cards__like-button')
+      .addEventListener('click', (evt) => {
+        putLike(apiSettings, cardId).then(() => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
+        });
+      });
+    }
+    }
+
+
+      let k = 0;
+        for (k in item) {
+      if (item.likes.length === 0) {
+        console.log(item);
+      console.log(10000);
+           //обработчик кнопки liked
+      element
+      .querySelector('.cards__like-button')
+      .addEventListener('click', (evt) => {
+        putLike(apiSettings, cardId).then(() => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
+        });
+      });
+      }
+    }
+
+      });
     }
 
     function handleConfirmDeleteSubmit(evt) {
@@ -59,6 +106,13 @@ const ChartCard = (function () {
 
     //функция удаления карточки из имеющегося набора
     function delCard(element) {
+      //сравнение id owner карточки с пользовательским и добавление значка delete в карточку
+      getUserMe(apiSettings).then((result) => {
+        if (item.owner._id === result._id) {
+          cardElement.querySelector('.cards__delete-button').style.display =
+            'block';
+        }
+      });
       //обработчик кнопки удаления карточки
       element
         .querySelector('.cards__delete-button')
@@ -73,26 +127,6 @@ const ChartCard = (function () {
     likeCard(cardElement);
     delCard(cardElement);
     openPopupImageCard(cardElement, item);
-
-    //сравнение id owner карточки с пользовательским и добавление значка delete в карточку
-    getUserMe(apiSettings).then((result) => {
-      if (item.owner._id === result._id) {
-        cardElement.querySelector('.cards__delete-button').style.display =
-          'block';
-      }
-
-
-let j = 0;
-for (j in item.likes) {
-
-  if (item.likes[j]._id === result._id) {
-      document.getElementById(`${item._id}`).querySelector('.cards__like-button').classList.add('cards__like-button_liked');
-  };
-}
-
-    });
-
-
 
     return cardElement;
   }
