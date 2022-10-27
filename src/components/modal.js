@@ -1,6 +1,6 @@
 import { addCard } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
-import { editProfile, getUserMe, sendCard } from '../components/api.js';
+import { editProfile, getUserMe, sendCard, updateAvatar, } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 import { initialAvatar, initialUser } from '../components/utils.js';
 
@@ -19,8 +19,11 @@ export {
   popupAddCard,
   formAddCard,
   clearFormInputs,
+  popupUpdateAvatar,
+  formUpdateAvatar,
   handleProfileFormSubmit,
   handleCardFormSubmit,
+  handleUpdateAvatarSubmit,
 };
 
 const profile = document.querySelector('.profile');
@@ -40,6 +43,11 @@ const inputCardName = formAddCard.elements.placeName;
 const inputCardLink = formAddCard.elements.placeLink;
 const image = popupImg.querySelector('.popup__image');
 const imageCaption = popupImg.querySelector('.popup__image-caption');
+const popupUpdateAvatar =document.querySelector('.popup_content_update-avatar');
+const formUpdateAvatar = document.forms.formAvatar;
+const inputAvatarUrl = formUpdateAvatar.elements.updateAvatar;
+const updateAvatarButton = formUpdateAvatar.querySelector('.form__save-button');
+
 
 //открытие popup
 function openPopup(popup) {
@@ -91,6 +99,29 @@ function handleCardFormSubmit(evt) {
     location.reload();
   });
 }
+
+//функция submit для формы редактирования аватара
+function handleUpdateAvatarSubmit(evt) {
+  evt.preventDefault();
+  updateAvatarButton.textContent = 'Сохранение...';
+  const urlAvatar = inputAvatarUrl.value;
+  //отправка url нового аватара на сервер
+  updateAvatar(apiSettings, urlAvatar).then((result) => {
+    console.log(result)
+  })
+    .then(() => {
+      getUserMe(apiSettings).then((res) => {
+        //добавление картинки в аватар профиля
+        initialAvatar(res);
+      })
+      .then(() => {
+        updateAvatarButton.textContent = 'Сохранить';
+        closePopup(popupUpdateAvatar);
+      })
+    //location.reload();
+  });
+}
+
 
 //функция открытия popup-img карточки
 function openPopupImageCard(element, item) {

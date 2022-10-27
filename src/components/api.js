@@ -6,6 +6,7 @@ export {
   deleteCard,
   putLike,
   deleteLike,
+  updateAvatar,
 };
 
 /*
@@ -144,7 +145,7 @@ async function deleteLike(settings, cardId) {
 }
 
 //функция запроса на обновление аватара пользователя
-async function editAvatar(settings, urlAvatar) {
+async function updateAvatar(settings, urlAvatar) {
   return fetch(
     `https://nomoreparties.co/v1/${settings.cohortId}/users/me/avatar`,
     {

@@ -20,8 +20,10 @@ import {
   popupAddCard,
   formAddCard,
   clearFormInputs,
+  formUpdateAvatar,
   handleProfileFormSubmit,
   handleCardFormSubmit,
+  handleUpdateAvatarSubmit,
 } from '../components/modal.js';
 
 import { getUserMe, initialCards } from '../components/api.js';
@@ -84,3 +86,6 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 //обработчик submit для формы добавления карточки
 formAddCard.addEventListener('submit', handleCardFormSubmit);
+
+//обработчик submit для формы редактирования аватара
+formUpdateAvatar.addEventListener('submit', handleUpdateAvatarSubmit);

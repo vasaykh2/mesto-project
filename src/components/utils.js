@@ -1,8 +1,6 @@
 import { profileName, profileJob } from '../components/modal.js';
 
-import {
-  openPopup,
-} from '../components/modal.js';
+import { openPopup, popupUpdateAvatar } from '../components/modal.js';
 
 export { initialAvatar, initialUser };
 
@@ -18,14 +16,14 @@ const ChartProfile = (function () {
         document.querySelector('.profile__wrapper-avatar').className =
           'profile__wrapper-avatar new';
       });
- //слушатель выхода мыши из аватара с возвращением прежднего класса псевдоэлемента
+      //слушатель выхода мыши из аватара с возвращением прежднего класса псевдоэлемента
       avatarImage.addEventListener('mouseout', () => {
         document.querySelector('.profile__wrapper-avatar.new').className =
           'profile__wrapper-avatar';
       });
       //слушатель клика по аватару с открытием попапа
       avatarImage.addEventListener('click', () => {
-        openPopup(document.querySelector('.popup_content_update-avatar'));
+        openPopup(popupUpdateAvatar);
       });
     },
     //функция добавления атрибутов в name и about пользователя
