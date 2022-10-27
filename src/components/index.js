@@ -49,6 +49,9 @@ getUserMe(apiSettings).then((result) => {
   //добавление name и about пользователя
   initialUser(result);
   //console.log(result);
+})
+.catch((err) => {
+  console.log(err);
 });
 
 //включение валидации
@@ -79,6 +82,9 @@ initialCards(apiSettings).then((result) => {
     addCard(result[i]);
   };
   console.log(result);
+})
+.catch((err) => {
+  console.log(err);
 });
 
 //обработчик submit для формы редактирования профиля

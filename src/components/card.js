@@ -53,6 +53,9 @@ const ChartCard = (function () {
         deleteLike(apiSettings, cardId).then(() => {
           console.log(result);
         })
+        .catch((err) => {
+          console.log(err);
+        })
         .then(() => {
           location.reload();
         });
@@ -64,6 +67,9 @@ const ChartCard = (function () {
       .addEventListener('click', (evt) => {
         putLike(apiSettings, cardId).then(() => {
           console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
         })
         .then(() => {
           location.reload();
@@ -85,6 +91,9 @@ const ChartCard = (function () {
         putLike(apiSettings, cardId).then(() => {
           console.log(result);
         })
+        .catch((err) => {
+          console.log(err);
+        })
         .then(() => {
           location.reload();
         });
@@ -101,6 +110,9 @@ const ChartCard = (function () {
       deleteCard(apiSettings, cardId).then(() => {
         //console.log(result);
         location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
       });
     }
 
@@ -112,6 +124,9 @@ const ChartCard = (function () {
           cardElement.querySelector('.cards__delete-button').style.display =
             'block';
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
       //обработчик кнопки удаления карточки
       element

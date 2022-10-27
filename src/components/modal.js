@@ -82,6 +82,9 @@ function handleProfileFormSubmit(evt) {
   //запрос на сервер обновления name и about профиля пользователя
   editProfile(apiSettings, inputName.value, inputJob.value).then((result) => {
     console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
   });
   initialUser({ name: inputName.value, about: inputJob.value });
   closePopup(popupEditProfile);
@@ -114,11 +117,16 @@ function handleUpdateAvatarSubmit(evt) {
         //добавление картинки в аватар профиля
         initialAvatar(res);
       })
+      .catch((err) => {
+        console.log(err);
+      })
       .then(() => {
         updateAvatarButton.textContent = 'Сохранить';
         closePopup(popupUpdateAvatar);
-      })
-    //location.reload();
+      });
+  })
+  .catch((err) => {
+    console.log(err);
   });
 }
 
