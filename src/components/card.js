@@ -1,8 +1,11 @@
+import { openPopupImageCard, openPopup } from '../components/modal.js';
 import {
-  openPopupImageCard,
-  openPopup,
-  } from '../components/modal.js';
-import { getUserMe, deleteCard } from '../components/api.js';
+  getUserMe,
+  deleteCard,
+  initialCards,
+  putLike,
+  deleteLike,
+} from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 
 const ChartCard = (function () {
@@ -11,20 +14,6 @@ const ChartCard = (function () {
   const popupConfirmDelete = document.querySelector(
     '.popup_content_confirm-delete'
   );
-
-  //https://kartinkin.net/uploads/posts/2022-03/1647854234_1-kartinkin-net-p-temnaya-noch-kartinki-1.jpg
-
-  //https://www.zastavki.com/pictures/originals/2015/Fantasy_Battle_of_the_dragon_and_phoenix_101205_.jpg
-
-  //функция liked карточки
-  function likeCard(element) {
-    //обработчик кнопки liked
-    element
-      .querySelector('.cards__like-button')
-      .addEventListener('click', (evt) => {
-        evt.target.classList.toggle('cards__like-button_liked');
-      });
-  }
 
   //функция создания карточки с местом, аргумент - объект с двумя ключами name и link
   function createCard(item) {
@@ -39,10 +28,25 @@ const ChartCard = (function () {
       countLikes = item.likes.length;
     }
     const cardId = item._id;
+    cardElement.id = cardId;
     cardsImage.src = item.link;
     cardsImage.alt = item.name;
     cardElement.querySelector('.cards__name').textContent = item.name;
     cardElement.querySelector('.cards__like-counter').textContent = countLikes;
+
+    //функция liked карточки
+    function likeCard(element) {
+      //обработчик кнопки liked
+      element
+        .querySelector('.cards__like-button')
+        .addEventListener('click', (evt) => {
+          putLike(apiSettings, cardId).then(() => {
+            //console.log(result);
+            evt.target.classList.toggle('cards__like-button_liked');
+            location.reload();
+          });
+        });
+    }
 
     function handleConfirmDeleteSubmit(evt) {
       evt.preventDefault();
@@ -61,23 +65,34 @@ const ChartCard = (function () {
         .addEventListener('click', () => {
           openPopup(popupConfirmDelete);
           document
-        .querySelector('.form_content_confirm-delete')
-        .addEventListener('submit', handleConfirmDeleteSubmit);
+            .querySelector('.form_content_confirm-delete')
+            .addEventListener('submit', handleConfirmDeleteSubmit);
         });
-
     }
 
     likeCard(cardElement);
     delCard(cardElement);
     openPopupImageCard(cardElement, item);
 
-    //сравнение ip с пользовательским и добавление значка delete в карточку
+    //сравнение id owner карточки с пользовательским и добавление значка delete в карточку
     getUserMe(apiSettings).then((result) => {
       if (item.owner._id === result._id) {
         cardElement.querySelector('.cards__delete-button').style.display =
           'block';
       }
+
+
+let j = 0;
+for (j in item.likes) {
+
+  if (item.likes[j]._id === result._id) {
+      document.getElementById(`${item._id}`).querySelector('.cards__like-button').classList.add('cards__like-button_liked');
+  };
+}
+
     });
+
+
 
     return cardElement;
   }

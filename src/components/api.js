@@ -1,4 +1,12 @@
-export { getUserMe, initialCards, editProfile, sendCard, deleteCard };
+export {
+  getUserMe,
+  initialCards,
+  editProfile,
+  sendCard,
+  deleteCard,
+  putLike,
+  deleteLike,
+};
 
 /*
 async function initAPI(settings, cb) {
@@ -85,6 +93,42 @@ async function sendCard(settings, name, link) {
 async function deleteCard(settings, cardId) {
   return fetch(
     `https://nomoreparties.co/v1/${settings.cohortId}/cards/${cardId}`,
+    {
+      method: 'DELETE',
+      headers: {
+        authorization: settings.token,
+      },
+    }
+  ).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+}
+
+//функция запроса постановки лайка карточке
+async function putLike(settings, cardId) {
+  return fetch(
+    `https://nomoreparties.co/v1/${settings.cohortId}/cards/likes/${cardId}`,
+    {
+      method: 'PUT',
+      headers: {
+        authorization: settings.token,
+      },
+    }
+  ).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+}
+
+//функция запроса снятия лайка карточке
+async function deleteLike(settings, cardId) {
+  return fetch(
+    `https://nomoreparties.co/v1/${settings.cohortId}/cards/likes/${cardId}`,
     {
       method: 'DELETE',
       headers: {
