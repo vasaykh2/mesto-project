@@ -143,38 +143,24 @@ async function deleteLike(settings, cardId) {
   });
 }
 
-/*
-[
-  {
-    "likes": [],
-    "_id": "5d1f0611d321eb4bdcd707dd",
-    "name": "Байкал",
-    "link": "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    "owner": {
-      "name": "Jacques Cousteau",
-      "about": "Sailor, researcher",
-      "avatar": "https://pictures.s3.yandex.net/frontend-developer/ava.jpg",
-      "_id": "ef5f7423f7f5e22bef4ad607",
-      "cohort": "local"
-    },
-    "createdAt": "2019-07-05T08:10:57.741Z"
-  },
-  {
-    "likes": [],
-    "_id": "5d1f064ed321eb4bdcd707de",
-    "name": "Архыз",
-    "link": "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    "owner": {
-      "name": "Jacques Cousteau",
-      "about": "Sailor, researcher",
-      "avatar": "https://pictures.s3.yandex.net/frontend-developer/ava.jpg",
-      "_id": "ef5f7423f7f5e22bef4ad607",
-      "cohort": "local"
-    },
-    "createdAt": "2019-07-05T08:11:58.324Z"
-  }
-]
-*/
-
-//{name: 'Jacques Cousteau', about: 'Sailor, researcher', avatar: 'https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg', _id: 'b928463b11692c2e10ed9588', cohort: 'plus-cohort-16'}
-//I'm #39
+//функция запроса на обновление аватара пользователя
+async function editAvatar(settings, urlAvatar) {
+  return fetch(
+    `https://nomoreparties.co/v1/${settings.cohortId}/users/me/avatar`,
+    {
+      method: 'PATCH',
+      headers: {
+        authorization: settings.token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        avatar: urlAvatar,
+      }),
+    }
+  ).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+}

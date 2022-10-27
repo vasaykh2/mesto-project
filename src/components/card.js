@@ -76,8 +76,8 @@ const ChartCard = (function () {
       let k = 0;
         for (k in item) {
       if (item.likes.length === 0) {
-        console.log(item);
-      console.log(10000);
+        //console.log(item);
+
            //обработчик кнопки liked
       element
       .querySelector('.cards__like-button')

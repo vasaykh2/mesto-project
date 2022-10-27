@@ -1,0 +1,25 @@
+.profile__wrapper-avatar {
+  position: relative;
+
+  width: 120px;
+  border-radius: 50%;
+  background-color: rgba(0 0 0 / 0.9);
+}
+
+.profile__wrapper-avatar::before {
+  content: ".";
+  color: rgba(0 0 0 / 0);
+  width: 120px;
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  background-image: url(../../../Vendor/images/pen.svg);
+  background-size: 26px 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+.profile__wrapper-avatar.new::before {
+  display: block;
+}
