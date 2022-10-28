@@ -38,6 +38,7 @@ const apiSettings = {
 };
 
 const inputList = Array.from(formAddCard);
+const buttonElement = formAddCard.querySelector(settings.saveButton);
 
 //инициация из сервера данных в профиль пользователя
 getUserInfo(apiSettings).then((result) => {
@@ -72,7 +73,6 @@ editButton.addEventListener('click', () => {
 
 //обработчик кнопки открытия popup для добавления карточки
 addButton.addEventListener('click', () => {
-  const buttonElement = formAddCard.querySelector(settings.saveButton);
   toggleButtonState(inputList, buttonElement, settings);
   openPopup(popupAddCard);
 });
