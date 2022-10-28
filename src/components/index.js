@@ -78,15 +78,15 @@ getUserInfo(apiSettings).then((result) => {
   initialUser(result);
   //console.log(result);
 })
-.catch((err) => {
-  console.log(err);
-})
 .then(() => {
 //инициация из сервера карточек при загрузке страницы
 fetchInitialCards(apiSettings).then((result) => renderInitialCards(result))
 .catch((err) => {
   console.log(err);
 });
+})
+.catch((err) => {
+  console.log(err);
 });
 
 //обработчик submit для формы редактирования профиля

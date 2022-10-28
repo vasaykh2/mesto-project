@@ -53,11 +53,11 @@ const ChartCard = (function () {
                   .then(() => {
                     console.log(result);
                   })
-                  .catch((err) => {
-                    console.log(err);
-                  })
                   .then(() => {
                     location.reload();
+                  })
+                  .catch((err) => {
+                    console.log(err);
                   });
               });
           } else {
@@ -69,11 +69,11 @@ const ChartCard = (function () {
                   .then(() => {
                     console.log(result);
                   })
-                  .catch((err) => {
-                    console.log(err);
-                  })
                   .then(() => {
                     location.reload();
+                  })
+                  .catch((err) => {
+                    console.log(err);
                   });
               });
           }
@@ -92,11 +92,11 @@ const ChartCard = (function () {
                   .then(() => {
                     console.log(result);
                   })
-                  .catch((err) => {
-                    console.log(err);
-                  })
                   .then(() => {
                     location.reload();
+                  })
+                  .catch((err) => {
+                    console.log(err);
                   });
               });
           }

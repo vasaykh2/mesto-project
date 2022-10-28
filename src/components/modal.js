@@ -84,13 +84,13 @@ function handleProfileFormSubmit(evt) {
     .then((result) => {
       console.log(result);
     })
-    .catch((err) => {
-      console.log(err);
-    })
     .then(() => {
       EditProfileButton.textContent = 'Сохранить';
       initialUser({ name: inputName.value, about: inputJob.value });
       closePopup(popupEditProfile);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 }
 
@@ -127,12 +127,12 @@ function handleUpdateAvatarSubmit(evt) {
           //добавление картинки в аватар профиля
           initialAvatar(res);
         })
-        .catch((err) => {
-          console.log(err);
-        })
         .then(() => {
           updateAvatarButton.textContent = 'Сохранить';
           closePopup(popupUpdateAvatar);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     })
     .catch((err) => {
