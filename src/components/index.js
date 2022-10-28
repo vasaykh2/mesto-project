@@ -56,16 +56,11 @@ getUserInfo(apiSettings).then((result) => {
 enableValidation(settings);
 
 
-
-
-
-
-
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
 editButton.addEventListener('click', () => {
   clearFormInputs(formEditProfile);
   updateFormEditProfile();
-  const buttonElement = formEditProfile.querySelector(settings.saveButton);
+
   disableSubmitButton (buttonElement);
   buttonElement.classList.add(settings.saveButtonInactive);
   openPopup(popupEditProfile);
