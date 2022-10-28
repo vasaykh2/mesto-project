@@ -62,6 +62,13 @@ addButton.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 
+//отрисовка карточек
+function renderInitialCards (result) {
+result.forEach(element => {
+  addCard(element);
+});
+console.log(result);
+}
 
 //инициация из сервера данных в профиль пользователя
 getUserInfo(apiSettings).then((result) => {
@@ -76,13 +83,7 @@ getUserInfo(apiSettings).then((result) => {
 })
 .then(() => {
 //инициация из сервера карточек при загрузке страницы
-fetchInitialCards(apiSettings).then((result) => {
-  let i = 0;
-  for (i in result) {
-    addCard(result[i]);
-  };
-  console.log(result);
-})
+fetchInitialCards(apiSettings).then((result) => renderInitialCards(result))
 .catch((err) => {
   console.log(err);
 });
