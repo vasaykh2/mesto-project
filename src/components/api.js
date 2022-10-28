@@ -1,6 +1,6 @@
 export {
   getUserInfo,
-  initialCards,
+  fetchInitialCards,
   editProfile,
   sendCard,
   deleteCard,
@@ -28,7 +28,7 @@ async function getUserInfo(settings) {
 }
 
 //функция запроса параметров карточки из сервера
-async function initialCards(settings) {
+async function fetchInitialCards(settings) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
     method: 'GET',
     headers: {

@@ -2,7 +2,6 @@ import { openPopupImageCard, openPopup } from '../components/modal.js';
 import {
   getUserInfo,
   deleteCard,
-  initialCards,
   putLike,
   deleteLike,
 } from '../components/api.js';
@@ -46,88 +45,91 @@ const ChartCard = (function () {
               .querySelector('.cards__like-button')
               .classList.add('cards__like-button_liked');
 
-              //обработчик кнопки liked
-      element
-      .querySelector('.cards__like-button')
-      .addEventListener('click', (evt) => {
-        deleteLike(apiSettings, cardId).then(() => {
-          console.log(result);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .then(() => {
-          location.reload();
-        });
-      });
+            //обработчик кнопки liked
+            element
+              .querySelector('.cards__like-button')
+              .addEventListener('click', (evt) => {
+                deleteLike(apiSettings, cardId)
+                  .then(() => {
+                    console.log(result);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  })
+                  .then(() => {
+                    location.reload();
+                  });
+              });
           } else {
-          //обработчик кнопки liked
-      element
-      .querySelector('.cards__like-button')
-      .addEventListener('click', (evt) => {
-        putLike(apiSettings, cardId).then(() => {
-          console.log(result);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .then(() => {
-          location.reload();
-        });
-      });
-    }
-    }
+            //обработчик кнопки liked
+            element
+              .querySelector('.cards__like-button')
+              .addEventListener('click', (evt) => {
+                putLike(apiSettings, cardId)
+                  .then(() => {
+                    console.log(result);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  })
+                  .then(() => {
+                    location.reload();
+                  });
+              });
+          }
+        }
 
-
-      let k = 0;
+        let k = 0;
         for (k in item) {
-      if (item.likes.length === 0) {
-        //console.log(item);
+          if (item.likes.length === 0) {
+            //console.log(item);
 
-           //обработчик кнопки liked
-      element
-      .querySelector('.cards__like-button')
-      .addEventListener('click', (evt) => {
-        putLike(apiSettings, cardId).then(() => {
-          console.log(result);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .then(() => {
-          location.reload();
-        });
-      });
-      }
-    }
-
+            //обработчик кнопки liked
+            element
+              .querySelector('.cards__like-button')
+              .addEventListener('click', (evt) => {
+                putLike(apiSettings, cardId)
+                  .then(() => {
+                    console.log(result);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  })
+                  .then(() => {
+                    location.reload();
+                  });
+              });
+          }
+        }
       });
     }
 
     function handleConfirmDeleteSubmit(evt) {
       evt.preventDefault();
       //запрос на сервер удаления карточки
-      deleteCard(apiSettings, cardId).then(() => {
-        //console.log(result);
-        location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      deleteCard(apiSettings, cardId)
+        .then(() => {
+          //console.log(result);
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
 
     //функция удаления карточки из имеющегося набора
     function delCard(element) {
       //сравнение id owner карточки с пользовательским и добавление значка delete в карточку
-      getUserInfo(apiSettings).then((result) => {
-        if (item.owner._id === result._id) {
-          cardElement.querySelector('.cards__delete-button').style.display =
-            'block';
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      getUserInfo(apiSettings)
+        .then((result) => {
+          if (item.owner._id === result._id) {
+            cardElement.querySelector('.cards__delete-button').style.display =
+              'block';
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       //обработчик кнопки удаления карточки
       element
         .querySelector('.cards__delete-button')

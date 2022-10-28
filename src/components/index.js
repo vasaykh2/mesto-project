@@ -26,7 +26,7 @@ import {
   handleUpdateAvatarSubmit,
 } from '../components/modal.js';
 
-import { getUserInfo, initialCards } from '../components/api.js';
+import { getUserInfo, fetchInitialCards } from '../components/api.js';
 
 export { apiSettings, }
 
@@ -76,7 +76,7 @@ addButton.addEventListener('click', () => {
 });
 
 //инициация из сервера карточек при загрузке страницы
-initialCards(apiSettings).then((result) => {
+fetchInitialCards(apiSettings).then((result) => {
   let i = 0;
   for (i in result) {
     addCard(result[i]);
