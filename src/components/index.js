@@ -40,17 +40,7 @@ const apiSettings = {
 const inputList = Array.from(formAddCard);
 const buttonElement = formAddCard.querySelector(settings.saveButton);
 
-//инициация из сервера данных в профиль пользователя
-getUserInfo(apiSettings).then((result) => {
-  //добавление картинки в аватар профиля
-  initialAvatar(result);
-  //добавление name и about пользователя
-  initialUser(result);
-  //console.log(result);
-})
-.catch((err) => {
-  console.log(err);
-});
+
 
 //включение валидации
 enableValidation(settings);
@@ -72,6 +62,20 @@ addButton.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 
+
+//инициация из сервера данных в профиль пользователя
+getUserInfo(apiSettings).then((result) => {
+  //добавление картинки в аватар профиля
+  initialAvatar(result);
+  //добавление name и about пользователя
+  initialUser(result);
+  //console.log(result);
+})
+.catch((err) => {
+  console.log(err);
+})
+.then((result) => {
+
 //инициация из сервера карточек при загрузке страницы
 fetchInitialCards(apiSettings).then((result) => {
   let i = 0;
@@ -82,6 +86,7 @@ fetchInitialCards(apiSettings).then((result) => {
 })
 .catch((err) => {
   console.log(err);
+});
 });
 
 //обработчик submit для формы редактирования профиля
