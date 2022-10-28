@@ -1,9 +1,13 @@
 import { addCard } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
-import { editProfile, getUserMe, sendCard, updateAvatar, } from '../components/api.js';
+import {
+  editProfile,
+  getUserMe,
+  sendCard,
+  updateAvatar,
+} from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 import { initialAvatar, initialUser } from '../components/utils.js';
-
 
 export {
   openPopupImageCard,
@@ -38,16 +42,19 @@ const profileJob = profile.querySelector('.profile__job');
 const formEditProfile = document.forms.formEdit;
 const inputName = formEditProfile.elements.userName;
 const inputJob = formEditProfile.elements.userJob;
+const EditProfileButton = formEditProfile.querySelector('.form__save-button');
 const formAddCard = document.forms.formAdd;
 const inputCardName = formAddCard.elements.placeName;
 const inputCardLink = formAddCard.elements.placeLink;
+const AddCardButton = formAddCard.querySelector('.form__save-button');
 const image = popupImg.querySelector('.popup__image');
 const imageCaption = popupImg.querySelector('.popup__image-caption');
-const popupUpdateAvatar =document.querySelector('.popup_content_update-avatar');
+const popupUpdateAvatar = document.querySelector(
+  '.popup_content_update-avatar'
+);
 const formUpdateAvatar = document.forms.formAvatar;
 const inputAvatarUrl = formUpdateAvatar.elements.updateAvatar;
 const updateAvatarButton = formUpdateAvatar.querySelector('.form__save-button');
-
 
 //открытие popup
 function openPopup(popup) {
@@ -79,26 +86,35 @@ function clearFormInputs(form) {
 //функция submit для формы редактирования профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+  EditProfileButton.textContent = 'Сохранение...';
   //запрос на сервер обновления name и about профиля пользователя
-  editProfile(apiSettings, inputName.value, inputJob.value).then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-  initialUser({ name: inputName.value, about: inputJob.value });
-  closePopup(popupEditProfile);
+  editProfile(apiSettings, inputName.value, inputJob.value)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      EditProfileButton.textContent = 'Сохранить';
+      initialUser({ name: inputName.value, about: inputJob.value });
+      closePopup(popupEditProfile);
+    });
 }
 
 //функция submit для формы добавления карточки
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
+  AddCardButton.textContent = 'Создаётся...';
   const item = {};
   item.name = inputCardName.value;
   item.link = inputCardLink.value;
   //отправка новой карточки на сервер
   sendCard(apiSettings, item.name, item.link).then((result) => {
     console.log(result);
+  })
+  .then(() => {
+    EditProfileButton.textContent = 'Сохранить';
     location.reload();
   });
 }
@@ -109,27 +125,28 @@ function handleUpdateAvatarSubmit(evt) {
   updateAvatarButton.textContent = 'Сохранение...';
   const urlAvatar = inputAvatarUrl.value;
   //отправка url нового аватара на сервер
-  updateAvatar(apiSettings, urlAvatar).then((result) => {
-    console.log(result)
-  })
+  updateAvatar(apiSettings, urlAvatar)
+    .then((result) => {
+      console.log(result);
+    })
     .then(() => {
-      getUserMe(apiSettings).then((res) => {
-        //добавление картинки в аватар профиля
-        initialAvatar(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .then(() => {
-        updateAvatarButton.textContent = 'Сохранить';
-        closePopup(popupUpdateAvatar);
-      });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+      getUserMe(apiSettings)
+        .then((res) => {
+          //добавление картинки в аватар профиля
+          initialAvatar(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .then(() => {
+          updateAvatarButton.textContent = 'Сохранить';
+          closePopup(popupUpdateAvatar);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
-
 
 //функция открытия popup-img карточки
 function openPopupImageCard(element, item) {
