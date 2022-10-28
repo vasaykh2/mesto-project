@@ -37,11 +37,7 @@ const apiSettings = {
   token: '9656253c-3dfe-4770-aeca-f882bc2dc634',
 };
 
-/*
-initAPI(apiSettings, (api, id) => {
-  //дальше все что нужно инициализируем, апи в себе хранит все что нужно просто используем
-});
-*/
+const inputList = Array.from(formAddCard);
 
 //инициация из сервера данных в профиль пользователя
 getUserInfo(apiSettings).then((result) => {
@@ -76,7 +72,6 @@ editButton.addEventListener('click', () => {
 
 //обработчик кнопки открытия popup для добавления карточки
 addButton.addEventListener('click', () => {
-  const inputList = Array.from(formAddCard);
   const buttonElement = formAddCard.querySelector(settings.saveButton);
   toggleButtonState(inputList, buttonElement, settings);
   openPopup(popupAddCard);
