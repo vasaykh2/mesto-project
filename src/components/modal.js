@@ -10,7 +10,7 @@ import { apiSettings } from '../components/index.js';
 import { initialAvatar, initialUser, renderLoading, } from '../components/utils.js';
 
 export {
-  openPopupImageCard,
+  setEventListenerForOpenImagePopup,
   editButton,
   updateFormEditProfile,
   openPopup,
@@ -140,7 +140,7 @@ function handleUpdateAvatarSubmit(evt) {
 }
 
 //функция открытия popup-img карточки
-function openPopupImageCard(element, item) {
+function setEventListenerForOpenImagePopup(element, item) {
   //обработчик клика на картинку карточки и открытия popup
   element.querySelector('.cards__image').addEventListener('click', () => {
     image.src = item.link;

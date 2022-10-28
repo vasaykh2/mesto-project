@@ -1,6 +1,6 @@
 export { addCard };
 
-import { openPopupImageCard, openPopup } from '../components/modal.js';
+import { setEventListenerForOpenImagePopup, openPopup } from '../components/modal.js';
 import {
   getUserInfo,
   deleteCard,
@@ -14,7 +14,7 @@ const cardTemplate = document.querySelector('#card-template').content;
 const popupConfirmDelete = document.querySelector(
   '.popup_content_confirm-delete'
 );
-const template = document.querySelector('#card-template');
+
 
 
 const getCardTemplate = (template, item) => template.querySelector(item).cloneNode(true);
@@ -112,7 +112,7 @@ function createCard(item) {
     deleteCard(apiSettings, cardId)
       .then(() => {
         //console.log(result);
-        location.reload();
+       location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -145,7 +145,7 @@ function createCard(item) {
 
   setEventListenerForLike(cardElement);
   delCard(cardElement);
-  openPopupImageCard(cardElement, item);
+  setEventListenerForOpenImagePopup(cardElement, item);
 
   return cardElement;
 }
