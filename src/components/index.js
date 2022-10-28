@@ -74,8 +74,7 @@ getUserInfo(apiSettings).then((result) => {
 .catch((err) => {
   console.log(err);
 })
-.then((result) => {
-
+.then(() => {
 //инициация из сервера карточек при загрузке страницы
 fetchInitialCards(apiSettings).then((result) => {
   let i = 0;
