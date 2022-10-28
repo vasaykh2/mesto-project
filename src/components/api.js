@@ -9,15 +9,13 @@ export {
   updateAvatar,
 };
 
-/*
-async function initAPI(settings, cb) {
-  //получаем ID
-  const id = await fetch ...;
-  //объявляем функции апи
-  const api = { ... };
-  cb(api, id);
+function checkStatus(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  // если ошибка, отклоняем промис
+  return Promise.reject(`Ошибка: ${res.status}`);
 }
-*/
 
 //функция запроса всех параметров пользователя профиля из сервера
 async function getUserInfo(settings) {
@@ -26,13 +24,7 @@ async function getUserInfo(settings) {
     headers: {
       authorization: settings.token,
     },
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    // если ошибка, отклоняем промис
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then((res) => checkStatus(res));
 }
 
 //функция запроса параметров карточки из сервера
@@ -42,12 +34,7 @@ async function initialCards(settings) {
     headers: {
       authorization: settings.token,
     },
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res => checkStatus(res));
 }
 
 //функция запроса на обновление параметров пользователя в профиле на сервере
@@ -62,12 +49,7 @@ async function editProfile(settings, name, about) {
       name: name,
       about: about,
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then((res) => checkStatus(res));
 }
 
 //функция запроса на отправку новой карточки на сервере
@@ -82,12 +64,7 @@ async function sendCard(settings, name, link) {
       name: name,
       link: link,
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then((res) => checkStatus(res));
 }
 
 //функция запроса удаления карточки из сервера
@@ -100,12 +77,7 @@ async function deleteCard(settings, cardId) {
         authorization: settings.token,
       },
     }
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  ).then((res) => checkStatus(res));
 }
 
 //функция запроса постановки лайка карточке
@@ -118,12 +90,7 @@ async function putLike(settings, cardId) {
         authorization: settings.token,
       },
     }
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  ).then((res) => checkStatus(res));
 }
 
 //функция запроса снятия лайка карточке
@@ -136,12 +103,7 @@ async function deleteLike(settings, cardId) {
         authorization: settings.token,
       },
     }
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  ).then((res) => checkStatus(res));
 }
 
 //функция запроса на обновление аватара пользователя
@@ -158,10 +120,5 @@ async function updateAvatar(settings, urlAvatar) {
         avatar: urlAvatar,
       }),
     }
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  ).then((res) => checkStatus(res));
 }
