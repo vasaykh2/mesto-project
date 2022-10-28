@@ -35,7 +35,7 @@ function createCard(item) {
   cardElement.querySelector('.cards__like-counter').textContent = countLikes;
 
   //функция liked карточки
-  function likeCard(element) {
+  function setEventListenerForLike(element) {
     getUserInfo(apiSettings).then((result) => {
       //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
       let j = 0;
@@ -142,7 +142,7 @@ function createCard(item) {
       });
   }
 
-  likeCard(cardElement);
+  setEventListenerForLike(cardElement);
   delCard(cardElement);
   openPopupImageCard(cardElement, item);
 
