@@ -26,7 +26,7 @@ import {
   handleUpdateAvatarSubmit,
 } from '../components/modal.js';
 
-import { getUserMe, initialCards } from '../components/api.js';
+import { getUserInfo, initialCards } from '../components/api.js';
 
 export { apiSettings, }
 
@@ -43,7 +43,7 @@ initAPI(apiSettings, (api, id) => {
 */
 
 //инициация из сервера данных в профиль пользователя
-getUserMe(apiSettings).then((result) => {
+getUserInfo(apiSettings).then((result) => {
   //добавление картинки в аватар профиля
   initialAvatar(result);
   //добавление name и about пользователя

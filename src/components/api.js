@@ -1,5 +1,5 @@
 export {
-  getUserMe,
+  getUserInfo,
   initialCards,
   editProfile,
   sendCard,
@@ -20,7 +20,7 @@ async function initAPI(settings, cb) {
 */
 
 //функция запроса всех параметров пользователя профиля из сервера
-async function getUserMe(settings) {
+async function getUserInfo(settings) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/users/me`, {
     method: 'GET',
     headers: {

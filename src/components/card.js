@@ -1,6 +1,6 @@
 import { openPopupImageCard, openPopup } from '../components/modal.js';
 import {
-  getUserMe,
+  getUserInfo,
   deleteCard,
   initialCards,
   putLike,
@@ -36,7 +36,7 @@ const ChartCard = (function () {
 
     //функция liked карточки
     function likeCard(element) {
-      getUserMe(apiSettings).then((result) => {
+      getUserInfo(apiSettings).then((result) => {
         //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
         let j = 0;
         for (j in item.likes) {
@@ -119,7 +119,7 @@ const ChartCard = (function () {
     //функция удаления карточки из имеющегося набора
     function delCard(element) {
       //сравнение id owner карточки с пользовательским и добавление значка delete в карточку
-      getUserMe(apiSettings).then((result) => {
+      getUserInfo(apiSettings).then((result) => {
         if (item.owner._id === result._id) {
           cardElement.querySelector('.cards__delete-button').style.display =
             'block';

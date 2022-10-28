@@ -2,7 +2,7 @@ import { addCard } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
 import {
   editProfile,
-  getUserMe,
+  getUserInfo,
   sendCard,
   updateAvatar,
 } from '../components/api.js';
@@ -130,7 +130,7 @@ function handleUpdateAvatarSubmit(evt) {
       console.log(result);
     })
     .then(() => {
-      getUserMe(apiSettings)
+      getUserInfo(apiSettings)
         .then((res) => {
           //добавление картинки в аватар профиля
           initialAvatar(res);
