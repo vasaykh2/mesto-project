@@ -120,7 +120,7 @@ function createCard(item) {
   }
 
   //функция удаления карточки из имеющегося набора
-  function delCard(element) {
+  function setEventListenerForCardRemoval(element) {
     //сравнение id owner карточки с пользовательским и добавление значка delete в карточку
     getUserInfo(apiSettings)
       .then((result) => {
@@ -144,7 +144,7 @@ function createCard(item) {
   }
 
   setEventListenerForLike(cardElement);
-  delCard(cardElement);
+  setEventListenerForCardRemoval(cardElement);
   setEventListenerForOpenImagePopup(cardElement, item);
 
   return cardElement;
