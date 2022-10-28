@@ -7,6 +7,7 @@ import { addCard } from '../components/card.js';
 import {
   settings,
   enableValidation,
+  disableSubmitButton,
   toggleButtonState,
 } from '../components/validate.js';
 
@@ -57,12 +58,18 @@ getUserInfo(apiSettings).then((result) => {
 //включение валидации
 enableValidation(settings);
 
+
+
+
+
+
+
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
 editButton.addEventListener('click', () => {
   clearFormInputs(formEditProfile);
   updateFormEditProfile();
   const buttonElement = formEditProfile.querySelector(settings.saveButton);
-  buttonElement.disabled = true;
+  disableSubmitButton (buttonElement);
   buttonElement.classList.add(settings.saveButtonInactive);
   openPopup(popupEditProfile);
 });

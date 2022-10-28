@@ -1,3 +1,5 @@
+export { settings, enableValidation, hideInputError, disableSubmitButton, toggleButtonState };
+
 const settings = {
   inputError: 'form__input_type_error',
   inputActive: 'form__input-error_active',
@@ -46,9 +48,13 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
+const disableSubmitButton = (buttonElement) => {
+  buttonElement.disabled = true;
+}
+
 const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.disabled = true;
+    disableSubmitButton(buttonElement);
     buttonElement.classList.add(settings.saveButtonInactive);
   } else {
     buttonElement.disabled = false;
@@ -84,4 +90,4 @@ const enableValidation = (settings) => {
   });
 };
 
-export { settings, enableValidation, hideInputError, toggleButtonState };
+
