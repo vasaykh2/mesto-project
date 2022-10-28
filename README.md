@@ -8,11 +8,11 @@
 
 **Интро**
 
-Это продолжение студенческого проекта Yandex-Практикума курса web-разработки+ о замечательных местах России. На текущем этапе в проект добавлены улудшения по концепции UX и сборка кода с помощью Webpack.
+Это продолжение студенческого проекта Yandex-Практикума курса web-разработки+ "Меsto". На текущем этапе в проект реализовано взаимодейс твие с сервером.
 
 **Методы**
 
-Сайт выполнен по макетам в Figma. https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1, https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1 и https://code.s3.yandex.net/web-developer/project-6/JavaScript.Sprint-6.fig.
+Сайт выполнен по макетам в Figma. https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1, https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1, https://code.s3.yandex.net/web-developer/project-6/JavaScript.Sprint-6.fig и https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%3A1.
 
 Таблицы стилей .css распределены в файловой структуре каталога blocks согласно методологии БЭМ Nested.
 
@@ -41,6 +41,22 @@
 - Настроена минификация и транспиляция JS-бабелем
 - Произведен рефакторинг в файлах html, css, js в связи с включением модульности и сборки Webpack
 
+## New! New! New!
+
+Методами запросов к серверу GET, PATCH, POST, DELETE, PUT реализована дополнительная функциональность:
+
+- Загрузка карточек с сервера
+- Загрузка информации о пользователе с сервера
+- Редактирование профиля с загрузка информации о пользователе на сервер
+- Добавление новой карточки на сервер (и соответственно в проект)
+- Отображение количества лайков карточки
+- Удаление карточки (собственного размещения)
+- Постановка и снятие лайка
+- Обновление аватара пользователя
+- Улучшенный UX форм (кнопка submit меняет состояние в течение получения ответа)
+- Предусмотрены возможности обрабатки ошибок запросов
+- Попап подтверждения удаления карточки
+
 **Инструменты**
 
 Изображения оптимизированы на ресурсе: https://tinypng.com/.
@@ -49,10 +65,12 @@
 
 Файл .editorconfig содержит установки для приложения VS Code.
 
-Используются  webpack , webpack-cli и webpack-dev-server.
+Используются webpack , webpack-cli и webpack-dev-server.
 
 Файлы package.json и webpack.config.js содержат скрипты для настройки среды Webpack.
 
 В файле .gitignore прописаны строки: node_modules и dist для push на GitHub.
+
+Использована вкладка браузера Network для просмотра запросов и инструментарий дебагинга.
 
 Ссылка на "Mesto" в GitHub Pages: https://vasaykh2.github.io/mesto-project/.
