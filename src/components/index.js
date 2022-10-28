@@ -51,7 +51,7 @@ editButton.addEventListener('click', () => {
   clearFormInputs(formEditProfile);
   updateFormEditProfile();
 
-  disableSubmitButton (buttonElement);
+  disableSubmitButton(buttonElement, true);
   buttonElement.classList.add(settings.saveButtonInactive);
   openPopup(popupEditProfile);
 });
@@ -80,10 +80,7 @@ getUserInfo(apiSettings).then((result) => {
 })
 .then(() => {
 //инициация из сервера карточек при загрузке страницы
-fetchInitialCards(apiSettings).then((result) => renderInitialCards(result))
-.catch((err) => {
-  console.log(err);
-});
+fetchInitialCards(apiSettings).then((result) => renderInitialCards(result));
 })
 .catch((err) => {
   console.log(err);

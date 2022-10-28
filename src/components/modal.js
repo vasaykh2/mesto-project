@@ -7,7 +7,7 @@ import {
   updateAvatar,
 } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
-import { initialAvatar, initialUser } from '../components/utils.js';
+import { initialAvatar, initialUser, renderLoading, } from '../components/utils.js';
 
 export {
   openPopupImageCard,
@@ -74,18 +74,17 @@ function updateFormEditProfile() {
 }
 
 
-
 //функция submit для формы редактирования профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  EditProfileButton.textContent = 'Сохранение...';
+  renderLoading(EditProfileButton, 'Сохранение...');
   //запрос на сервер обновления name и about профиля пользователя
   editProfile(apiSettings, inputName.value, inputJob.value)
     .then((result) => {
       console.log(result);
     })
     .then(() => {
-      EditProfileButton.textContent = 'Сохранить';
+      renderLoading(EditProfileButton, 'Сохранить');
       initialUser({ name: inputName.value, about: inputJob.value });
       closePopup(popupEditProfile);
     })
@@ -97,7 +96,7 @@ function handleProfileFormSubmit(evt) {
 //функция submit для формы добавления карточки
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  AddCardButton.textContent = 'Создаётся...';
+  renderLoading(AddCardButton, 'Создаётся...');
   const item = {};
   item.name = inputCardName.value;
   item.link = inputCardLink.value;
@@ -106,7 +105,7 @@ function handleCardFormSubmit(evt) {
     console.log(result);
   })
   .then(() => {
-    EditProfileButton.textContent = 'Сохранить';
+    renderLoading(EditProfileButton, 'Сохранить');
     location.reload();
   });
 }
@@ -114,7 +113,7 @@ function handleCardFormSubmit(evt) {
 //функция submit для формы редактирования аватара
 function handleUpdateAvatarSubmit(evt) {
   evt.preventDefault();
-  updateAvatarButton.textContent = 'Сохранение...';
+  renderLoading(updateAvatarButton, 'Сохранение...');
   const urlAvatar = inputAvatarUrl.value;
   //отправка url нового аватара на сервер
   updateAvatar(apiSettings, urlAvatar)
@@ -128,11 +127,8 @@ function handleUpdateAvatarSubmit(evt) {
           initialAvatar(res);
         })
         .then(() => {
-          updateAvatarButton.textContent = 'Сохранить';
+          renderLoading(updateAvatarButton, 'Сохранить');
           closePopup(popupUpdateAvatar);
-        })
-        .catch((err) => {
-          console.log(err);
         });
     })
     .catch((err) => {

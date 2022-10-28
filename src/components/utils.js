@@ -2,7 +2,7 @@ import { profileName, profileJob } from '../components/modal.js';
 
 import { openPopup, popupUpdateAvatar } from '../components/modal.js';
 
-export { initialAvatar, initialUser };
+export { initialAvatar, initialUser, renderLoading, };
 
 const avatarImage = document.querySelector('.profile__avatar');
 
@@ -31,3 +31,4 @@ const avatarImage = document.querySelector('.profile__avatar');
     profileJob.textContent = item.about;
   }
 
+  const renderLoading = (Button, txt) => Button.textContent = txt;
