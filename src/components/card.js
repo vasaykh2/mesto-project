@@ -1,3 +1,5 @@
+export { addCard };
+
 import { openPopupImageCard, openPopup } from '../components/modal.js';
 import {
   getUserInfo,
@@ -7,7 +9,6 @@ import {
 } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 
-const ChartCard = (function () {
   const cardContainer = document.querySelector('.cards');
   const cardTemplate = document.querySelector('#card-template').content;
   const popupConfirmDelete = document.querySelector(
@@ -148,14 +149,8 @@ const ChartCard = (function () {
     return cardElement;
   }
 
-  return {
+
     //функция добавления созданной карточки с местом в DOM
-    addCard: function (item) {
+    const addCard = function (item) {
       cardContainer.prepend(createCard(item));
-    },
-  };
-})();
-
-const addCard = ChartCard.addCard;
-
-export { addCard };
+    }
