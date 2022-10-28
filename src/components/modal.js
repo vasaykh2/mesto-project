@@ -22,7 +22,6 @@ export {
   addButton,
   popupAddCard,
   formAddCard,
-  clearFormInputs,
   popupUpdateAvatar,
   formUpdateAvatar,
   handleProfileFormSubmit,
@@ -74,14 +73,7 @@ function updateFormEditProfile() {
   inputJob.value = profileJob.textContent;
 }
 
-//очистка полей формы
-function clearFormInputs(form) {
-  const inputs = Array.from(form.querySelectorAll(settings.input));
-  inputs.forEach((input) => {
-    input.value = '';
-    hideInputError(form, input, settings);
-  });
-}
+
 
 //функция submit для формы редактирования профиля
 function handleProfileFormSubmit(evt) {

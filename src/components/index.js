@@ -6,6 +6,7 @@ import { addCard } from '../components/card.js';
 
 import {
   settings,
+  clearFormInputs,
   enableValidation,
   disableSubmitButton,
   toggleButtonState,
@@ -20,7 +21,6 @@ import {
   addButton,
   popupAddCard,
   formAddCard,
-  clearFormInputs,
   formUpdateAvatar,
   handleProfileFormSubmit,
   handleCardFormSubmit,

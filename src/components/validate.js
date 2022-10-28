@@ -1,4 +1,4 @@
-export { settings, enableValidation, hideInputError, disableSubmitButton, toggleButtonState };
+export { settings, clearFormInputs, enableValidation, hideInputError, disableSubmitButton, toggleButtonState };
 
 const settings = {
   inputError: 'form__input_type_error',
@@ -8,6 +8,15 @@ const settings = {
   input: '.form__input',
   form: '.form',
 };
+
+//очистка полей формы
+function clearFormInputs(form) {
+  const inputs = Array.from(form.querySelectorAll(settings.input));
+  inputs.forEach((input) => {
+    input.value = '';
+    hideInputError(form, input, settings);
+  });
+}
 
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
