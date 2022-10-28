@@ -107,6 +107,9 @@ function handleCardFormSubmit(evt) {
   .then(() => {
     renderLoading(EditProfileButton, 'Сохранить');
     location.reload();
+  })
+  .catch((err) => {
+    console.log(err);
   });
 }
 
