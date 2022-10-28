@@ -2,7 +2,7 @@ export {
   getUserInfo,
   fetchInitialCards,
   editProfile,
-  sendCard,
+  createCard,
   deleteCard,
   putLike,
   deleteLike,
@@ -53,7 +53,7 @@ async function editProfile(settings, name, about) {
 }
 
 //функция запроса на отправку новой карточки на сервере
-async function sendCard(settings, name, link) {
+async function createCard(settings, name, link) {
   return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
     method: 'POST',
     headers: {

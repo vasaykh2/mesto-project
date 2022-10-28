@@ -3,7 +3,7 @@ import { settings, hideInputError } from '../components/validate.js';
 import {
   editProfile,
   getUserInfo,
-  sendCard,
+  createCard,
   updateAvatar,
 } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
@@ -110,7 +110,7 @@ function handleCardFormSubmit(evt) {
   item.name = inputCardName.value;
   item.link = inputCardLink.value;
   //отправка новой карточки на сервер
-  sendCard(apiSettings, item.name, item.link).then((result) => {
+  createCard(apiSettings, item.name, item.link).then((result) => {
     console.log(result);
   })
   .then(() => {
