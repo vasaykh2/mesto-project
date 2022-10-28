@@ -40,71 +40,70 @@ function createCard(item) {
   function setEventListenerForLike(element) {
     getUserInfo(apiSettings).then((result) => {
       //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
-      let j = 0;
+    let j = 0;
       for (j in item.likes) {
         if (item.likes[j]._id === result._id) {
           document.getElementById(`${item._id}`)
             .querySelector('.cards__like-button')
             .classList.add('cards__like-button_liked');
+      }
+    }
+  // console.log(item);
 
-          //обработчик кнопки liked
+
+
+
+//обработчик кнопки liked
           element
             .querySelector('.cards__like-button')
             .addEventListener('click', (evt) => {
-              deleteLike(apiSettings, cardId)
-                .then(() => {
-                  console.log(result);
-                })
-                .then(() => {
-                  location.reload();
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            });
+
+console.log(item.likes)
+if (item.likes.length !== 0) {
+  console.log(item.likes)
+      let i =0;
+      for (i in item.likes) {
+        if (item.likes[i]._id !== result._id) {
+          putLike(apiSettings, cardId)
+        .then(() => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
         } else {
-          //обработчик кнопки liked
-          element
-            .querySelector('.cards__like-button')
-            .addEventListener('click', (evt) => {
-              putLike(apiSettings, cardId)
-                .then(() => {
-                  console.log(result);
-                })
-                .then(() => {
-                  location.reload();
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            });
-        }
-      }
-
-      let k = 0;
-      for (k in item) {
-        if (item.likes.length === 0) {
-          //console.log(item);
-
-          //обработчик кнопки liked
-          element
-            .querySelector('.cards__like-button')
-            .addEventListener('click', (evt) => {
-              putLike(apiSettings, cardId)
-                .then(() => {
-                  console.log(result);
-                })
-                .then(() => {
-                  location.reload();
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            });
-        }
-      }
-    });
+        deleteLike(apiSettings, cardId)
+        .then(() => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      };
+   }
+  } else {
+    putLike(apiSettings, cardId)
+        .then(() => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   }
+          });
+
+        });
+    }
+
 
   function handleConfirmDeleteSubmit(evt) {
     evt.preventDefault();
