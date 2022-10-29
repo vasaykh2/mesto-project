@@ -1,5 +1,5 @@
 import { cardContainer, createNewCard, } from '../components/card.js';
-import { settings, hideInputError } from '../components/validate.js';
+
 import {
   editProfile,
   getUserInfo,
