@@ -1,6 +1,12 @@
 import { profileName, profileJob } from '../components/modal.js';
 
-import { openPopup, popupUpdateAvatar } from '../components/modal.js';
+import {
+  openPopup,
+  formUpdateAvatar,
+  popupUpdateAvatar,
+} from '../components/modal.js';
+
+import { clearFormInputs } from '../components/validate.js';
 
 export { initialAvatar, initialUser, renderLoading };
 
@@ -22,6 +28,7 @@ const initialAvatar = function (item) {
   });
   //слушатель клика по аватару с открытием попапа
   avatarImage.addEventListener('click', () => {
+    clearFormInputs(formUpdateAvatar);
     openPopup(popupUpdateAvatar);
   });
 };
