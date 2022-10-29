@@ -1,6 +1,6 @@
 export { addCard };
 
-import { setEventListenerForOpenImagePopup, openPopup } from '../components/modal.js';
+import { setEventListenerForOpenImagePopup, openPopup, closePopup } from '../components/modal.js';
 import {
   getUserInfo,
   deleteCard,
@@ -50,15 +50,11 @@ function createCard(item) {
     }
   // console.log(item);
 
-
-
-
 //обработчик кнопки liked
           element
             .querySelector('.cards__like-button')
             .addEventListener('click', (evt) => {
-
-console.log(item.likes)
+//console.log(item.likes)
 if (item.likes.length !== 0) {
   console.log(item.likes)
       let i =0;
@@ -104,14 +100,15 @@ if (item.likes.length !== 0) {
         });
     }
 
-
   function handleConfirmDeleteSubmit(evt) {
     evt.preventDefault();
     //запрос на сервер удаления карточки
     deleteCard(apiSettings, cardId)
       .then(() => {
-        //console.log(result);
-       location.reload();
+       closePopup(popupConfirmDelete)
+       cardElement.remove();
+       //console.log(cardElement);
+       //console.log(evt);
       })
       .catch((err) => {
         console.log(err);
