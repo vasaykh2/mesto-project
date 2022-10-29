@@ -43,7 +43,7 @@ function createCard(item) {
     let j = 0;
       for (j in item.likes) {
         if (item.likes[j]._id === result._id) {
-          document.getElementById(`${item._id}`)
+          document.getElementById(`${cardId}`)
             .querySelector('.cards__like-button')
             .classList.add('cards__like-button_liked');
       }
