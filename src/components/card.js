@@ -36,7 +36,7 @@ function createCard(item) {
   cardElement.querySelector('.cards__name').textContent = item.name;
   cardElement.querySelector('.cards__like-counter').textContent = countLikes;
 
-  //функция liked карточки
+  //получение id пользователя для определения вида и поведения кнопки liked и добавления значка delete карточке
   function setEventListenerForLike(element) {
     getUserInfo(apiSettings).then((result) => {
       //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
@@ -96,6 +96,14 @@ if (item.likes.length !== 0) {
   }
           });
 
+          //добавление значка delete в карточку по результатам сравнения id owner карточки с пользовательским
+    if (item.owner._id === result._id) {
+        cardElement.querySelector('.cards__delete-button').style.display =
+          'block';
+      }
+    })
+.catch((err) => {
+      console.log(err);
         });
     }
 
@@ -116,17 +124,7 @@ if (item.likes.length !== 0) {
 
   //функция удаления карточки из имеющегося набора
   function setEventListenerForCardRemoval(element) {
-    //сравнение id owner карточки с пользовательским и добавление значка delete в карточку
-    getUserInfo(apiSettings)
-      .then((result) => {
-        if (item.owner._id === result._id) {
-          cardElement.querySelector('.cards__delete-button').style.display =
-            'block';
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
     //обработчик кнопки удаления карточки
     element
       .querySelector('.cards__delete-button')
