@@ -47,15 +47,7 @@ function createNewCard(item) {
   function setEventListenerForLike(element) {
     getUserInfo(apiSettings)
       .then((result) => {
-        //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
-        let j = 0;
-        for (j in item.likes) {
-          if (item.likes[j]._id === result._id) {
-            cardLikeButton.classList.add('cards__like-button_liked');
-          }
-        }
         // console.log(item);
-
         let likesLength;
         let hasIdUser;
         function checkItemLikes (likes, idUser) {
@@ -69,6 +61,10 @@ function createNewCard(item) {
         }
         checkItemLikes (item.likes, result._id);
 
+        //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
+        if (hasIdUser == true) {
+          cardLikeButton.classList.add('cards__like-button_liked');
+        }
 
 
        function handleClickOnLikeButton() {
@@ -86,7 +82,7 @@ function createNewCard(item) {
               hasIdUser = true;
               cardLikeButton.classList.add('cards__like-button_liked');
               countLikes.textContent = likesLength;
-              setEventListenerForLike(cardElement);
+              handleClickOnLikeButton;
               return likesLength, hasIdUser;
                 })
                 .catch((err) => {
@@ -102,7 +98,7 @@ function createNewCard(item) {
                   hasIdUser = false;
                   cardLikeButton.classList.remove('cards__like-button_liked');
                   countLikes.textContent = likesLength;
-                  setEventListenerForLike(cardElement);
+                  handleClickOnLikeButton;
                   return likesLength, hasIdUser;
                 })
                 .catch((err) => {
@@ -120,7 +116,7 @@ function createNewCard(item) {
               hasIdUser = true;
               cardLikeButton.classList.add('cards__like-button_liked');
               countLikes.textContent = likesLength;
-              setEventListenerForLike(cardElement);
+              handleClickOnLikeButton;
               return likesLength, hasIdUser;
             })
             .catch((err) => {
