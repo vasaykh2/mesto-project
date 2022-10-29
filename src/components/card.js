@@ -147,7 +147,7 @@ function createCard(item) {
   return cardElement;
 }
 
-//функция добавления созданной карточки с местом в DOM
+//функция добавления созданной карточки в конец DOM-контейнера
 const addCard = function (item) {
-  cardContainer.prepend(createCard(item));
+  cardContainer.append(createCard(item));
 };
