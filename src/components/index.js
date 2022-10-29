@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import { initialAvatar, initialUser, } from '../components/utils.js';
+import { initialAvatar, initialUser } from '../components/utils.js';
 
 import { addCard } from '../components/card.js';
 
@@ -29,8 +29,7 @@ import {
 
 import { getUserInfo, fetchInitialCards } from '../components/api.js';
 
-export { apiSettings, }
-
+export { apiSettings };
 
 const apiSettings = {
   cohortId: 'plus-cohort-16',
@@ -40,11 +39,8 @@ const apiSettings = {
 const inputList = Array.from(formAddCard);
 const buttonElement = formAddCard.querySelector(settings.saveButton);
 
-
-
 //включение валидации
 enableValidation(settings);
-
 
 //обработчик кнопки редактирования профиля (открытия popup редактирования профиля)
 editButton.addEventListener('click', () => {
@@ -63,28 +59,29 @@ addButton.addEventListener('click', () => {
 });
 
 //отрисовка карточек
-function renderInitialCards (result) {
-result.forEach(element => {
-  addCard(element);
-});
-console.log(result);
+function renderInitialCards(result) {
+  result.forEach((element) => {
+    addCard(element);
+  });
+  console.log(result);
 }
 
 //инициация из сервера данных в профиль пользователя
-getUserInfo(apiSettings).then((result) => {
-  //добавление картинки в аватар профиля
-  initialAvatar(result);
-  //добавление name и about пользователя
-  initialUser(result);
-  //console.log(result);
-})
-.then(() => {
-//инициация из сервера карточек при загрузке страницы
-fetchInitialCards(apiSettings).then((result) => renderInitialCards(result));
-})
-.catch((err) => {
-  console.log(err);
-});
+getUserInfo(apiSettings)
+  .then((result) => {
+    //добавление картинки в аватар профиля
+    initialAvatar(result);
+    //добавление name и about пользователя
+    initialUser(result);
+    //console.log(result);
+  })
+  .then(() => {
+    //инициация из сервера карточек при загрузке страницы
+    fetchInitialCards(apiSettings).then((result) => renderInitialCards(result));
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 //обработчик submit для формы редактирования профиля
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);

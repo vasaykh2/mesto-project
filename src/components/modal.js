@@ -7,7 +7,11 @@ import {
   updateAvatar,
 } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
-import { initialAvatar, initialUser, renderLoading, } from '../components/utils.js';
+import {
+  initialAvatar,
+  initialUser,
+  renderLoading,
+} from '../components/utils.js';
 
 export {
   setEventListenerForOpenImagePopup,
@@ -41,11 +45,11 @@ const profileJob = profile.querySelector('.profile__job');
 const formEditProfile = document.forms.formEdit;
 const inputName = formEditProfile.elements.userName;
 const inputJob = formEditProfile.elements.userJob;
-const EditProfileButton = formEditProfile.querySelector('.form__save-button');
+const editProfileButton = formEditProfile.querySelector('.form__save-button');
 const formAddCard = document.forms.formAdd;
 const inputCardName = formAddCard.elements.placeName;
 const inputCardLink = formAddCard.elements.placeLink;
-const AddCardButton = formAddCard.querySelector('.form__save-button');
+const addCardButton = formAddCard.querySelector('.form__save-button');
 const image = popupImg.querySelector('.popup__image');
 const imageCaption = popupImg.querySelector('.popup__image-caption');
 const popupUpdateAvatar = document.querySelector(
@@ -73,18 +77,17 @@ function updateFormEditProfile() {
   inputJob.value = profileJob.textContent;
 }
 
-
 //функция submit для формы редактирования профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  renderLoading(EditProfileButton, 'Сохранение...');
+  renderLoading(editProfileButton, 'Сохранение...');
   //запрос на сервер обновления name и about профиля пользователя
   editProfile(apiSettings, inputName.value, inputJob.value)
     .then((result) => {
       console.log(result);
     })
     .then(() => {
-      renderLoading(EditProfileButton, 'Сохранить');
+      renderLoading(editProfileButton, 'Сохранить');
       initialUser({ name: inputName.value, about: inputJob.value });
       closePopup(popupEditProfile);
     })
@@ -96,21 +99,22 @@ function handleProfileFormSubmit(evt) {
 //функция submit для формы добавления карточки
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  renderLoading(AddCardButton, 'Создаётся...');
+  renderLoading(addCardButton, 'Создаётся...');
   const item = {};
   item.name = inputCardName.value;
   item.link = inputCardLink.value;
   //отправка новой карточки на сервер
-  createCard(apiSettings, item.name, item.link).then((result) => {
-    console.log(result);
-  })
-  .then(() => {
-    renderLoading(EditProfileButton, 'Сохранить');
-    location.reload();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  createCard(apiSettings, item.name, item.link)
+    .then((result) => {
+      console.log(result);
+    })
+    .then(() => {
+      renderLoading(editProfileButton, 'Сохранить');
+      location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 //функция submit для формы редактирования аватара

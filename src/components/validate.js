@@ -1,4 +1,11 @@
-export { settings, clearFormInputs, enableValidation, hideInputError, disableSubmitButton, toggleButtonState };
+export {
+  settings,
+  clearFormInputs,
+  enableValidation,
+  hideInputError,
+  disableSubmitButton,
+  toggleButtonState,
+};
 
 const settings = {
   inputError: 'form__input_type_error',
@@ -59,7 +66,7 @@ const hasInvalidInput = (inputList) => {
 
 const disableSubmitButton = (buttonElement, state) => {
   buttonElement.disabled = state;
-}
+};
 
 const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
@@ -98,5 +105,3 @@ const enableValidation = (settings) => {
     setEventListeners(formElement, settings);
   });
 };
-
-

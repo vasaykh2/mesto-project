@@ -34,7 +34,7 @@ async function fetchInitialCards(settings) {
     headers: {
       authorization: settings.token,
     },
-  }).then(res => checkStatus(res));
+  }).then((res) => checkStatus(res));
 }
 
 //функция запроса на обновление параметров пользователя в профиле на сервере
