@@ -1,4 +1,4 @@
-import { addCard } from '../components/card.js';
+import { cardContainer, createNewCard, } from '../components/card.js';
 import { settings, hideInputError } from '../components/validate.js';
 import {
   editProfile,
@@ -105,12 +105,14 @@ function handleCardFormSubmit(evt) {
   item.link = inputCardLink.value;
   //отправка новой карточки на сервер
   createCard(apiSettings, item.name, item.link)
-    .then((result) => {
-      console.log(result);
-    })
-    .then(() => {
-      renderLoading(editProfileButton, 'Сохранить');
-      location.reload();
+    .then((element) => {
+      console.log(element);
+      //debugger
+      cardContainer.prepend(createNewCard(element));
+      //debugger
+      //console.log(element);
+      closePopup(popupAddCard);
+      renderLoading(addCardButton, 'Сохранить');
     })
     .catch((err) => {
       console.log(err);

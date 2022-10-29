@@ -1,4 +1,4 @@
-export { addCard };
+export { cardContainer, createNewCard,addCard, };
 
 import {
   setEventListenerForOpenImagePopup,
@@ -23,21 +23,25 @@ const getCardTemplate = (template, item) =>
   template.querySelector(item).cloneNode(true);
 
 //функция создания карточки с местом, аргумент - объект с двумя ключами name и link
-function createCard(item) {
+function createNewCard(item) {
   const cardElement = getCardTemplate(cardTemplate, '.cards__item');
-  const cardsImage = cardElement.querySelector('.cards__image');
-  let countLikes;
+  const cardImage = cardElement.querySelector('.cards__image');
+  const cardLikeButton = cardElement.querySelector('.cards__like-button');
+  const countLikes = cardElement.querySelector('.cards__like-counter');
+
+//подсчет лайков на карточке
   if (!item.likes) {
-    countLikes = 0;
+    countLikes.textContent = 0;
   } else {
-    countLikes = item.likes.length;
+    countLikes.textContent = item.likes.length;
   }
+
   const cardId = item._id;
   cardElement.id = cardId;
-  cardsImage.src = item.link;
-  cardsImage.alt = item.name;
+  cardImage.src = item.link;
+  cardImage.alt = item.name;
   cardElement.querySelector('.cards__name').textContent = item.name;
-  cardElement.querySelector('.cards__like-counter').textContent = countLikes;
+
 
   //получение id пользователя для определения вида и поведения кнопки liked и добавления значка delete карточке
   function setEventListenerForLike(element) {
@@ -47,59 +51,89 @@ function createCard(item) {
         let j = 0;
         for (j in item.likes) {
           if (item.likes[j]._id === result._id) {
-            cardElement
-              .querySelector('.cards__like-button')
-              .classList.add('cards__like-button_liked');
+            cardLikeButton.classList.add('cards__like-button_liked');
           }
         }
         // console.log(item);
 
-        //обработчик кнопки liked
-        element
-          .querySelector('.cards__like-button')
-          .addEventListener('click', (evt) => {
-            //console.log(item.likes)
-            if (item.likes.length !== 0) {
-              console.log(item.likes);
-              let i = 0;
-              for (i in item.likes) {
-                if (item.likes[i]._id !== result._id) {
-                  putLike(apiSettings, cardId)
-                    .then(() => {
-                      console.log(result);
-                    })
-                    .then(() => {
-                      location.reload();
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
-                } else {
-                  deleteLike(apiSettings, cardId)
-                    .then(() => {
-                      console.log(result);
-                    })
-                    .then(() => {
-                      location.reload();
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
-                }
-              }
-            } else {
+        let likesLength;
+        let hasIdUser;
+        function checkItemLikes (likes, idUser) {
+          likesLength = likes.length;
+          if (likes.findIndex(el => el._id == idUser) === -1) {
+            hasIdUser = false;
+          } else {
+            hasIdUser = true;
+          }
+          //console.log(likesLength, hasIdUser);
+        }
+        checkItemLikes (item.likes, result._id);
+
+
+
+       function handleClickOnLikeButton() {
+        //console.log(likesLength, hasIdUser);
+        if (likesLength !== 0) {
+          //console.log(item.likes);
+            if (hasIdUser == false) {
               putLike(apiSettings, cardId)
                 .then(() => {
-                  console.log(result);
+                  //console.log(result);
+                  //console.log(item.likes);
                 })
                 .then(() => {
-                  location.reload();
+              likesLength++;
+              hasIdUser = true;
+              cardLikeButton.classList.add('cards__like-button_liked');
+              countLikes.textContent = likesLength;
+              setEventListenerForLike(cardElement);
+              return likesLength, hasIdUser;
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            } else {
+              deleteLike(apiSettings, cardId)
+                .then(() => {
+                  //console.log(result);
+                })
+                .then(() => {
+                  likesLength--;
+                  hasIdUser = false;
+                  cardLikeButton.classList.remove('cards__like-button_liked');
+                  countLikes.textContent = likesLength;
+                  setEventListenerForLike(cardElement);
+                  return likesLength, hasIdUser;
                 })
                 .catch((err) => {
                   console.log(err);
                 });
             }
-          });
+        }
+        else {
+          putLike(apiSettings, cardId)
+            .then(() => {
+              //console.log(result);
+            })
+            .then(() => {
+              likesLength++;
+              hasIdUser = true;
+              cardLikeButton.classList.add('cards__like-button_liked');
+              countLikes.textContent = likesLength;
+              setEventListenerForLike(cardElement);
+              return likesLength, hasIdUser;
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+       }
+
+        //слушатель кнопки liked
+        element
+          .querySelector('.cards__like-button')
+          .addEventListener('click', handleClickOnLikeButton);
+
 
         //добавление значка delete в карточку по результатам сравнения id owner карточки с пользовательским
         if (item.owner._id === result._id) {
@@ -149,5 +183,5 @@ function createCard(item) {
 
 //функция добавления созданной карточки в конец DOM-контейнера
 const addCard = function (item) {
-  cardContainer.append(createCard(item));
+  cardContainer.append(createNewCard(item));
 };

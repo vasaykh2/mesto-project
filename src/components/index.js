@@ -61,6 +61,8 @@ addButton.addEventListener('click', () => {
 //отрисовка карточек
 function renderInitialCards(result) {
   result.forEach((element) => {
+    //console.log(element);
+    //debugger
     addCard(element);
   });
   console.log(result);
