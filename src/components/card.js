@@ -71,7 +71,7 @@ function createNewCard(item) {
         //console.log(likesLength, hasIdUser);
         if (likesLength !== 0) {
           //console.log(item.likes);
-            if (hasIdUser == false) {
+            if (hasIdUser === false) {
               putLike(apiSettings, cardId)
                 .then(() => {
                   //console.log(result);
