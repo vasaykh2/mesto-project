@@ -110,7 +110,7 @@ function handleCardFormSubmit(evt) {
     .then((element) => {
       console.log(element);
       //debugger
-      cardContainer.prepend(createNewCard(element));
+      cardContainer.prepend(createNewCard(element, element.owner._id));
       //debugger
       //console.log(element);
       closePopup(popupAddCard);

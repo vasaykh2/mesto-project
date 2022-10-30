@@ -38,6 +38,7 @@ const apiSettings = {
 
 const inputList = Array.from(formAddCard);
 const buttonElement = formAddCard.querySelector(settings.saveButton);
+let userId;
 
 //включение валидации
 enableValidation(settings);
@@ -58,11 +59,11 @@ addButton.addEventListener('click', () => {
 });
 
 //отрисовка карточек
-function renderInitialCards(result) {
+function renderInitialCards(result, userId) {
   result.forEach((element) => {
     //console.log(element);
     //debugger
-    addCard(element);
+    addCard(element, userId);
   });
   console.log(result);
 }
@@ -75,10 +76,10 @@ getUserInfo(apiSettings)
     //добавление name и about пользователя
     saveUserInfo(result);
     //console.log(result);
-  })
-  .then(() => {
+    userId = result._id;
+    //console.log(userId);
     //инициация из сервера карточек при загрузке страницы
-    fetchInitialCards(apiSettings).then((result) => renderInitialCards(result));
+    fetchInitialCards(apiSettings).then((data) => renderInitialCards(data, userId));
   })
   .catch((err) => {
     console.log(err);
