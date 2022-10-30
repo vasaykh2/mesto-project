@@ -46,9 +46,7 @@ enableValidation(settings);
 editButton.addEventListener('click', () => {
   clearFormInputs(formEditProfile);
   updateFormEditProfile();
-
   disableSubmitButton(buttonElement, true);
-  buttonElement.classList.add(settings.saveButtonInactive);
   openPopup(popupEditProfile);
 });
 

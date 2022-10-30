@@ -39,3 +39,4 @@ const initialUser = function (item) {
 };
 
 const renderLoading = (button, txt) => (button.textContent = txt);
+

@@ -87,12 +87,14 @@ function handleProfileFormSubmit(evt) {
       console.log(result);
     })
     .then(() => {
-      renderLoading(editProfileButton, 'Сохранить');
       initialUser({ name: inputName.value, about: inputJob.value });
       closePopup(popupEditProfile);
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(editProfileButton, 'Сохранить');
     });
 }
 
@@ -112,10 +114,12 @@ function handleCardFormSubmit(evt) {
       //debugger
       //console.log(element);
       closePopup(popupAddCard);
-      renderLoading(addCardButton, 'Сохранить');
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(addCardButton, 'Сохранить');
     });
 }
 
@@ -136,12 +140,14 @@ function handleUpdateAvatarSubmit(evt) {
           initialAvatar(res);
         })
         .then(() => {
-          renderLoading(updateAvatarButton, 'Сохранить');
           closePopup(popupUpdateAvatar);
         });
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(updateAvatarButton, 'Сохранить');
     });
 }
 
