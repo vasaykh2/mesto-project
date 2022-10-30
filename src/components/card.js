@@ -67,32 +67,6 @@ function createNewCard(item, userId) {
       cardLikeButton.classList.add('cards__like-button_liked');
     }
 
-
-
-    let ownerHasIdUser;
-    function checkItemOwner(owner, userId) {
-      if (owner._id == userId) {
-        ownerHasIdUser = true;
-      } else {
-        ownerHasIdUser = false;
-      }
-      //console.log(owner._id, userId);
-    }
-    checkItemOwner(item.owner, userId);
-
-
-    //добавление значка delete в карточку по результатам сравнения id owner карточки с пользовательским
-    if (ownerHasIdUser === true) {
-      cardDeleteButton.classList.add('cards__delete-button_visibl');
-    }
-
-
-
-
-
-
-
-
     function handleClickOnLikeButton() {
       //console.log(likesLength, hasIdUser);
       if (likesLength !== 0) {
@@ -153,25 +127,23 @@ function createNewCard(item, userId) {
       .addEventListener('click', handleClickOnLikeButton);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
   //функция удаления карточки из имеющегося набора
   function setEventListenerForCardRemoval(element, userId) {
+    let ownerHasIdUser;
+    function checkItemOwner(owner, userId) {
+      if (owner._id == userId) {
+        ownerHasIdUser = true;
+      } else {
+        ownerHasIdUser = false;
+      }
+      //console.log(owner._id, userId);
+    }
+    checkItemOwner(item.owner, userId);
 
-
-
-
-    //cardLikeButton.classList.add('cards__delete-button_visibl')
+    //добавление значка delete в карточку по результатам сравнения id owner карточки с пользовательским
+    if (ownerHasIdUser === true) {
+      cardDeleteButton.classList.add('cards__delete-button_visibl');
+    }
 
     //console.log(item.owner._id);
     //console.log(userId);

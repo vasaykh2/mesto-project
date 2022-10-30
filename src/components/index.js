@@ -68,7 +68,7 @@ function renderInitialCards(result, userId) {
   console.log(result);
 }
 
-//инициация из сервера данных в профиль пользователя
+//инициация из сервера данных в профиль пользователя и передача userId на создание карточек
 getUserInfo(apiSettings)
   .then((result) => {
     //добавление картинки в аватар профиля
@@ -79,7 +79,9 @@ getUserInfo(apiSettings)
     userId = result._id;
     //console.log(userId);
     //инициация из сервера карточек при загрузке страницы
-    fetchInitialCards(apiSettings).then((data) => renderInitialCards(data, userId));
+    fetchInitialCards(apiSettings).then((data) =>
+      renderInitialCards(data, userId)
+    );
   })
   .catch((err) => {
     console.log(err);
