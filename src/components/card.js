@@ -62,7 +62,7 @@ function createNewCard(item) {
         checkItemLikes (item.likes, result._id);
 
         //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
-        if (hasIdUser == true) {
+        if (hasIdUser === true) {
           cardLikeButton.classList.add('cards__like-button_liked');
         }
 
