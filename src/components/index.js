@@ -2,7 +2,7 @@ export { apiSettings };
 
 import '../pages/index.css';
 
-import { initlAvatar, saveUserInfo } from '../components/utils.js';
+import { initAvatar, saveUserInfo } from '../components/utils.js';
 
 import { addCard } from '../components/card.js';
 
@@ -72,7 +72,7 @@ function renderInitialCards(result, userId) {
 getUserInfo(apiSettings)
   .then((result) => {
     //добавление картинки в аватар профиля
-    initlAvatar(result);
+    initAvatar(result);
     //добавление name и about пользователя
     saveUserInfo(result);
     //console.log(result);

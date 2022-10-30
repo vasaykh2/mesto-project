@@ -1,4 +1,4 @@
-export { initlAvatar, saveUserInfo, renderLoading };
+export { initAvatar, saveUserInfo, renderLoading };
 
 import { profileName, profileJob } from '../components/modal.js';
 
@@ -21,7 +21,7 @@ const buttonElementFormUpdateAvatar = formUpdateAvatar.querySelector(
 );
 
 //функция добавления атрибутов в img аватара
-const initlAvatar = function (item) {
+const initAvatar = function (item) {
   avatarImage.src = item.avatar;
   avatarImage.alt = item.name;
   //слушатель наведения мыши на аватар с изменением класса псевдоэлемента

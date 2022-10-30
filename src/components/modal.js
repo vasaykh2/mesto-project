@@ -8,7 +8,7 @@ import {
 } from '../components/api.js';
 import { apiSettings } from '../components/index.js';
 import {
-  initlAvatar,
+  initAvatar,
   saveUserInfo,
   renderLoading,
 } from '../components/utils.js';
@@ -137,7 +137,7 @@ function handleUpdateAvatarSubmit(evt) {
       getUserInfo(apiSettings)
         .then((res) => {
           //добавление картинки в аватар профиля
-          initlAvatar(res);
+          initAvatar(res);
         })
         .then(() => {
           closePopup(popupUpdateAvatar);
