@@ -18,6 +18,8 @@ const cardTemplate = document.querySelector('#card-template').content;
 const popupConfirmDelete = document.querySelector(
   '.popup_content_confirm-delete'
 );
+const formConfirmDelete = document
+          .querySelector('.form_content_confirm-delete')
 
 const getCardTemplate = (template, item) =>
   template.querySelector(item).cloneNode(true);
@@ -116,7 +118,7 @@ function createNewCard(item) {
               hasIdUser = true;
               cardLikeButton.classList.add('cards__like-button_liked');
               countLikes.textContent = likesLength;
-              
+
               return likesLength, hasIdUser;
             })
             .catch((err) => {
@@ -164,9 +166,7 @@ function createNewCard(item) {
       .querySelector('.cards__delete-button')
       .addEventListener('click', () => {
         openPopup(popupConfirmDelete);
-        document
-          .querySelector('.form_content_confirm-delete')
-          .addEventListener('submit', handleConfirmDeleteSubmit);
+        formConfirmDelete.addEventListener('submit', handleConfirmDeleteSubmit);
       });
   }
 
