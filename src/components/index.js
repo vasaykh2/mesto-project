@@ -1,4 +1,4 @@
-export { apiSettings, };
+export { apiSettings };
 
 import '../pages/index.css';
 
