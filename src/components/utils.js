@@ -8,7 +8,7 @@ import {
 
 import { clearFormInputs } from '../components/validate.js';
 
-export { initlAvatar, initialUser, renderLoading };
+export { initlAvatar, saveUserInfo, renderLoading };
 
 const avatarImage = document.querySelector('.profile__avatar');
 
@@ -33,7 +33,7 @@ const initlAvatar = function (item) {
   });
 };
 //функция добавления атрибутов в name и about пользователя
-const initialUser = function (item) {
+const saveUserInfo = function (item) {
   profileName.textContent = item.name;
   profileJob.textContent = item.about;
 };

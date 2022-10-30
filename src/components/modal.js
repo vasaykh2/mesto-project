@@ -9,7 +9,7 @@ import {
 import { apiSettings } from '../components/index.js';
 import {
   initlAvatar,
-  initialUser,
+  saveUserInfo,
   renderLoading,
 } from '../components/utils.js';
 
@@ -87,7 +87,7 @@ function handleProfileFormSubmit(evt) {
       console.log(result);
     })
     .then(() => {
-      initialUser({ name: inputName.value, about: inputJob.value });
+      saveUserInfo({ name: inputName.value, about: inputJob.value });
       closePopup(popupEditProfile);
     })
     .catch((err) => {
