@@ -1,4 +1,4 @@
-import { cardContainer, createNewCard, } from '../components/card.js';
+import { cardContainer, createNewCard } from '../components/card.js';
 
 import {
   editProfile,

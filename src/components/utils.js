@@ -1,3 +1,5 @@
+export { initlAvatar, saveUserInfo, renderLoading };
+
 import { profileName, profileJob } from '../components/modal.js';
 
 import {
@@ -7,8 +9,6 @@ import {
 } from '../components/modal.js';
 
 import { clearFormInputs } from '../components/validate.js';
-
-export { initlAvatar, saveUserInfo, renderLoading };
 
 const avatarImage = document.querySelector('.profile__avatar');
 
@@ -39,4 +39,3 @@ const saveUserInfo = function (item) {
 };
 
 const renderLoading = (button, txt) => (button.textContent = txt);
-

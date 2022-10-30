@@ -1,4 +1,4 @@
-export { cardContainer, createNewCard,addCard, };
+export { cardContainer, createNewCard, addCard };
 
 import {
   setEventListenerForOpenImagePopup,
@@ -18,8 +18,9 @@ const cardTemplate = document.querySelector('#card-template').content;
 const popupConfirmDelete = document.querySelector(
   '.popup_content_confirm-delete'
 );
-const formConfirmDelete = document
-          .querySelector('.form_content_confirm-delete')
+const formConfirmDelete = document.querySelector(
+  '.form_content_confirm-delete'
+);
 
 const getCardTemplate = (template, item) =>
   template.querySelector(item).cloneNode(true);
@@ -31,7 +32,7 @@ function createNewCard(item) {
   const cardLikeButton = cardElement.querySelector('.cards__like-button');
   const countLikes = cardElement.querySelector('.cards__like-counter');
 
-//подсчет лайков на карточке
+  //подсчет лайков на карточке
   if (!item.likes) {
     countLikes.textContent = 0;
   } else {
@@ -44,7 +45,6 @@ function createNewCard(item) {
   cardImage.alt = item.name;
   cardElement.querySelector('.cards__name').textContent = item.name;
 
-
   //получение id пользователя для определения вида и поведения кнопки liked и добавления значка delete карточке
   function setEventListenerForLike(element) {
     getUserInfo(apiSettings)
@@ -52,27 +52,26 @@ function createNewCard(item) {
         // console.log(item);
         let likesLength;
         let hasIdUser;
-        function checkItemLikes (likes, idUser) {
+        function checkItemLikes(likes, idUser) {
           likesLength = likes.length;
-          if (likes.findIndex(el => el._id == idUser) === -1) {
+          if (likes.findIndex((el) => el._id == idUser) === -1) {
             hasIdUser = false;
           } else {
             hasIdUser = true;
           }
           //console.log(likesLength, hasIdUser);
         }
-        checkItemLikes (item.likes, result._id);
+        checkItemLikes(item.likes, result._id);
 
         //перевод like-button в liked при наличии id пользователя в объектах массива likes карточки на сервере
         if (hasIdUser === true) {
           cardLikeButton.classList.add('cards__like-button_liked');
         }
 
-
-       function handleClickOnLikeButton() {
-        //console.log(likesLength, hasIdUser);
-        if (likesLength !== 0) {
-          //console.log(item.likes);
+        function handleClickOnLikeButton() {
+          //console.log(likesLength, hasIdUser);
+          if (likesLength !== 0) {
+            //console.log(item.likes);
             if (hasIdUser === false) {
               putLike(apiSettings, cardId)
                 .then(() => {
@@ -80,12 +79,12 @@ function createNewCard(item) {
                   //console.log(item.likes);
                 })
                 .then(() => {
-              likesLength++;
-              hasIdUser = true;
-              cardLikeButton.classList.add('cards__like-button_liked');
-              countLikes.textContent = likesLength;
+                  likesLength++;
+                  hasIdUser = true;
+                  cardLikeButton.classList.add('cards__like-button_liked');
+                  countLikes.textContent = likesLength;
 
-              return likesLength, hasIdUser;
+                  return likesLength, hasIdUser;
                 })
                 .catch((err) => {
                   console.log(err);
@@ -107,31 +106,29 @@ function createNewCard(item) {
                   console.log(err);
                 });
             }
-        }
-        else {
-          putLike(apiSettings, cardId)
-            .then(() => {
-              //console.log(result);
-            })
-            .then(() => {
-              likesLength++;
-              hasIdUser = true;
-              cardLikeButton.classList.add('cards__like-button_liked');
-              countLikes.textContent = likesLength;
+          } else {
+            putLike(apiSettings, cardId)
+              .then(() => {
+                //console.log(result);
+              })
+              .then(() => {
+                likesLength++;
+                hasIdUser = true;
+                cardLikeButton.classList.add('cards__like-button_liked');
+                countLikes.textContent = likesLength;
 
-              return likesLength, hasIdUser;
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+                return likesLength, hasIdUser;
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
         }
-       }
 
         //слушатель кнопки liked
         element
           .querySelector('.cards__like-button')
           .addEventListener('click', handleClickOnLikeButton);
-
 
         //добавление значка delete в карточку по результатам сравнения id owner карточки с пользовательским
         if (item.owner._id === result._id) {
