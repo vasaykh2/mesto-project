@@ -1,3 +1,5 @@
+export { apiSettings, };
+
 import '../pages/index.css';
 
 import { initlAvatar, saveUserInfo } from '../components/utils.js';
@@ -29,8 +31,6 @@ import {
 
 import { getUserInfo, fetchInitialCards } from '../components/api.js';
 
-export { apiSettings };
-
 const apiSettings = {
   cohortId: 'plus-cohort-16',
   token: '9656253c-3dfe-4770-aeca-f882bc2dc634',
@@ -52,6 +52,7 @@ editButton.addEventListener('click', () => {
 
 //обработчик кнопки открытия popup для добавления карточки
 addButton.addEventListener('click', () => {
+  clearFormInputs(formAddCard);
   toggleButtonState(inputList, buttonElement, settings);
   openPopup(popupAddCard);
 });

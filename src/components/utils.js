@@ -8,9 +8,11 @@ import {
   popupUpdateAvatar,
 } from '../components/modal.js';
 
-import { clearFormInputs } from '../components/validate.js';
+import { clearFormInputs, settings, toggleButtonState } from '../components/validate.js';
 
 const avatarImage = document.querySelector('.profile__avatar');
+const inputListFormUpdateAvatar = Array.from(formUpdateAvatar);
+const buttonElementFormUpdateAvatar = formUpdateAvatar.querySelector(settings.saveButton);
 
 //функция добавления атрибутов в img аватара
 const initlAvatar = function (item) {
@@ -29,6 +31,7 @@ const initlAvatar = function (item) {
   //слушатель клика по аватару с открытием попапа
   avatarImage.addEventListener('click', () => {
     clearFormInputs(formUpdateAvatar);
+    toggleButtonState(inputListFormUpdateAvatar, buttonElementFormUpdateAvatar, settings);
     openPopup(popupUpdateAvatar);
   });
 };
