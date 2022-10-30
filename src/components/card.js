@@ -82,7 +82,7 @@ function createNewCard(item) {
               hasIdUser = true;
               cardLikeButton.classList.add('cards__like-button_liked');
               countLikes.textContent = likesLength;
-              handleClickOnLikeButton;
+
               return likesLength, hasIdUser;
                 })
                 .catch((err) => {
@@ -98,7 +98,7 @@ function createNewCard(item) {
                   hasIdUser = false;
                   cardLikeButton.classList.remove('cards__like-button_liked');
                   countLikes.textContent = likesLength;
-                  handleClickOnLikeButton;
+
                   return likesLength, hasIdUser;
                 })
                 .catch((err) => {
@@ -116,7 +116,7 @@ function createNewCard(item) {
               hasIdUser = true;
               cardLikeButton.classList.add('cards__like-button_liked');
               countLikes.textContent = likesLength;
-              handleClickOnLikeButton;
+              
               return likesLength, hasIdUser;
             })
             .catch((err) => {
