@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import { initialAvatar, initialUser } from '../components/utils.js';
+import { initlAvatar, initialUser } from '../components/utils.js';
 
 import { addCard } from '../components/card.js';
 
@@ -70,7 +70,7 @@ function renderInitialCards(result) {
 getUserInfo(apiSettings)
   .then((result) => {
     //добавление картинки в аватар профиля
-    initialAvatar(result);
+    initlAvatar(result);
     //добавление name и about пользователя
     initialUser(result);
     //console.log(result);

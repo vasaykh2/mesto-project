@@ -8,12 +8,12 @@ import {
 
 import { clearFormInputs } from '../components/validate.js';
 
-export { initialAvatar, initialUser, renderLoading };
+export { initlAvatar, initialUser, renderLoading };
 
 const avatarImage = document.querySelector('.profile__avatar');
 
 //функция добавления атрибутов в img аватара
-const initialAvatar = function (item) {
+const initlAvatar = function (item) {
   avatarImage.src = item.avatar;
   avatarImage.alt = item.name;
   //слушатель наведения мыши на аватар с изменением класса псевдоэлемента
