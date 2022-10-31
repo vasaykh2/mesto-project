@@ -73,12 +73,13 @@ function createNewCard(item, userId) {
         //console.log(item.likes);
         if (hasIdUser === false) {
           putLike(apiSettings, cardId)
-            .then(() => {
+            .then((res) => {
               //console.log(result);
               //console.log(item.likes);
+              likesLength = res['likes'].length;
             })
             .then(() => {
-              likesLength++;
+              //likesLength++;
               hasIdUser = true;
               cardLikeButton.classList.add('cards__like-button_liked');
               countLikes.textContent = likesLength;
@@ -89,11 +90,12 @@ function createNewCard(item, userId) {
             });
         } else {
           deleteLike(apiSettings, cardId)
-            .then(() => {
+            .then((res) => {
               //console.log(result);
+              likesLength = res['likes'].length;
             })
             .then(() => {
-              likesLength--;
+              //likesLength--;
               hasIdUser = false;
               cardLikeButton.classList.remove('cards__like-button_liked');
               countLikes.textContent = likesLength;
@@ -105,11 +107,12 @@ function createNewCard(item, userId) {
         }
       } else {
         putLike(apiSettings, cardId)
-          .then(() => {
+          .then((res) => {
             //console.log(result);
+            likesLength = res['likes'].length;
           })
           .then(() => {
-            likesLength++;
+            //likesLength++;
             hasIdUser = true;
             cardLikeButton.classList.add('cards__like-button_liked');
             countLikes.textContent = likesLength;
