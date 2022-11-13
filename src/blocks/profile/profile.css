@@ -1,23 +1,15 @@
-.profile {
-  width: 100%;
-  margin: 0 auto 50px;
-  display: grid;
-  grid-template-columns: 120px 2fr 1fr;
-  grid-template-rows: 1fr;
+.profile{
+  padding-top: 26px;
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  padding-bottom: 51px;
 }
 
-@media (max-width: 977px) {
-  .profile {
-    width: calc(2 * 282px + 17px);
-  }
-}
-
-@media (max-width: 645px) {
-  .profile {
-    width: 100%;
-    display: flex;
+@media screen and (max-width: 770px) {
+  .profile{
     flex-direction: column;
-    margin-bottom: 36px;
+    justify-content: center;
+    padding-top: 38px;
   }
 }

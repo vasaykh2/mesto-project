@@ -1,124 +1,86 @@
-export {
-  getUserInfo,
-  fetchInitialCards,
-  editProfile,
-  createCard,
-  deleteCard,
-  putLike,
-  deleteLike,
-  updateAvatar,
+import { checkResp } from './util.js'
+
+const config = {
+  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-15',
+  headers: {
+    authorization: '6e42217e-2177-4476-b93c-c82e4a9b29ea',
+    'Content-Type': 'application/json'
+  }
+}
+
+const getUserInfo = () => {
+  return fetch(`${config.baseUrl}/users/me`, {
+    method: 'GET',
+    headers: config.headers
+  })
+  .then(checkResp)
 };
 
-function checkStatus(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  // если ошибка, отклоняем промис
-  return Promise.reject(`Ошибка: ${res.status}`);
-}
-
-//функция запроса всех параметров пользователя профиля из сервера
-async function getUserInfo(settings) {
-  return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/users/me`, {
-    method: 'GET',
-    headers: {
-      authorization: settings.token,
-    },
-  }).then((res) => checkStatus(res));
-}
-
-//функция запроса параметров карточки из сервера
-async function fetchInitialCards(settings) {
-  return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
-    method: 'GET',
-    headers: {
-      authorization: settings.token,
-    },
-  }).then((res) => checkStatus(res));
-}
-
-//функция запроса на обновление параметров пользователя в профиле на сервере
-async function editProfile(settings, name, about) {
-  return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/users/me`, {
+const setUserInfo = (name, about) => {
+  return fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
-    headers: {
-      authorization: settings.token,
-      'Content-Type': 'application/json',
-    },
+    headers: config.headers,
     body: JSON.stringify({
-      name: name,
-      about: about,
-    }),
-  }).then((res) => checkStatus(res));
+      name: `${name}`,
+      about: `${about}`
+    })
+  })
+  .then(checkResp)
 }
 
-//функция запроса на отправку новой карточки на сервере
-async function createCard(settings, name, link) {
-  return fetch(`https://nomoreparties.co/v1/${settings.cohortId}/cards`, {
+const getCards = () => {
+  return fetch(`${config.baseUrl}/cards`, {
+    method: 'GET',
+    headers: config.headers
+  })
+  .then(checkResp)
+};
+
+const postCard = (cardName, cardImg) => {
+  return fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
-    headers: {
-      authorization: settings.token,
-      'Content-Type': 'application/json',
-    },
+    headers: config.headers,
     body: JSON.stringify({
-      name: name,
-      link: link,
-    }),
-  }).then((res) => checkStatus(res));
+      name: cardName,
+      link: cardImg
+    })
+  })
+  .then(checkResp)
+};
+
+const deleteCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  })
+  .then(checkResp)
 }
 
-//функция запроса удаления карточки из сервера
-async function deleteCard(settings, cardId) {
-  return fetch(
-    `https://nomoreparties.co/v1/${settings.cohortId}/cards/${cardId}`,
-    {
-      method: 'DELETE',
-      headers: {
-        authorization: settings.token,
-      },
-    }
-  ).then((res) => checkStatus(res));
+const likeCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`,{
+    method: 'PUT',
+    headers: config.headers
+  })
+  .then(checkResp)
+};
+
+const deleteLikeCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  })
+  .then(checkResp)
+};
+
+const updateAvatar = (newImg) => {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: newImg
+    })
+  })
+  .then(checkResp)
 }
 
-//функция запроса постановки лайка карточке
-async function putLike(settings, cardId) {
-  return fetch(
-    `https://nomoreparties.co/v1/${settings.cohortId}/cards/likes/${cardId}`,
-    {
-      method: 'PUT',
-      headers: {
-        authorization: settings.token,
-      },
-    }
-  ).then((res) => checkStatus(res));
-}
-
-//функция запроса снятия лайка карточке
-async function deleteLike(settings, cardId) {
-  return fetch(
-    `https://nomoreparties.co/v1/${settings.cohortId}/cards/likes/${cardId}`,
-    {
-      method: 'DELETE',
-      headers: {
-        authorization: settings.token,
-      },
-    }
-  ).then((res) => checkStatus(res));
-}
-
-//функция запроса на обновление аватара пользователя
-async function updateAvatar(settings, urlAvatar) {
-  return fetch(
-    `https://nomoreparties.co/v1/${settings.cohortId}/users/me/avatar`,
-    {
-      method: 'PATCH',
-      headers: {
-        authorization: settings.token,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        avatar: urlAvatar,
-      }),
-    }
-  ).then((res) => checkStatus(res));
-}
+export { config, getUserInfo, setUserInfo, getCards, postCard, deleteCard, likeCard, deleteLikeCard, updateAvatar, checkResp }

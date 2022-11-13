@@ -1,16 +1,12 @@
-.header__logo {
-  width: 142px;
-  height: 33px;
-  background-image: url(../../../Vendor/images/logo.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-display: inline-block;
+.header__logo{
+  padding-bottom: 41px;
 }
 
-@media (max-width: 645px) {
-  .header__logo {
-    width: 103.74px;
+@media screen and (max-width: 770px){
+  .header__logo{
+    width: 104px;
+    height: 25px;
+    padding-bottom: 30px;
     padding-left: 27px;
   }
 }
