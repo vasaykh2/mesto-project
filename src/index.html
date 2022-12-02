@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Фотографии мест и формы" />
+    <meta name="keywords" content="места, фотографии" />
+    <meta name="author" content="команда YP" />
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -14,6 +17,7 @@
         alt="Лого сайта"
       />
     </header>
+
     <main>
       <section class="profile">
         <button class="profile__avatar-button">
@@ -41,6 +45,7 @@
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
     </main>
+
     <section class="popup popup_type_edit-profile">
       <div class="popup__overlay">
         <button type="button" class="popup__close-button"></button>
@@ -79,6 +84,7 @@
         </form>
       </div>
     </section>
+
     <section class="popup popup_type_add-place">
       <div class="popup__overlay">
         <button type="button" class="popup__close-button"></button>
@@ -110,19 +116,7 @@
         </form>
       </div>
     </section>
-    <template class="place-template">
-      <div class="place">
-        <img class="place__image" />
-        <div class="place__description">
-          <h2 class="place__title"></h2>
-          <div class="place__likes-cont">
-            <button type="button" class="place__like-button"></button>
-            <p class="place__like-count"></p>
-          </div>
-        </div>
-        <button class="place__delete-button"></button>
-      </div>
-    </template>
+
     <section class="popup popup_type_place">
       <div class="popup__overlay popup__overlay_column">
         <div class="popup__container">
@@ -135,6 +129,32 @@
         </div>
       </div>
     </section>
+
+    <section class="popup popup_type_confirm-delete">
+      <div class="popup__overlay">
+        <form
+          class="popup__form popup__form_content_confirm-delete"
+          name="delete-card-form"
+          novalidate
+        >
+          <h3 class="popup__title popup__title_type_confirm-delete">
+            Вы уверены?
+          </h3>
+          <button
+            type="submit"
+            class="popup__submit-button popup__submit-button_type_confirm-delete"
+            value="Да"
+          >
+            Да
+          </button>
+        </form>
+        <button
+          type="button"
+          class="popup__close-button popup__close-button_place_confirm-delete"
+        ></button>
+      </div>
+    </section>
+
     <section class="popup popup_type_avatar">
       <div class="popup__overlay">
         <button
@@ -156,5 +176,19 @@
         </form>
       </div>
     </section>
+
+    <template id="card-template">
+      <div class="place">
+        <img class="place__image" />
+        <div class="place__description">
+          <h2 class="place__title"></h2>
+          <div class="place__likes-cont">
+            <button type="button" class="place__like-button"></button>
+            <p class="place__like-count"></p>
+          </div>
+        </div>
+        <button class="place__delete-button"></button>
+      </div>
+    </template>
   </body>
 </html>
