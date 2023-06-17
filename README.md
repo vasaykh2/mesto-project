@@ -70,3 +70,4 @@
 Использован инструментарий вкладки браузера Network для просмотра запросов и дебагинга.
 
 * [Ссылка на "Mesto" в GitHub Pages] (https://vasaykh2.github.io/mesto-project/)
+* [Ссылка в vercel.com] (https://mesto-project-xi.vercel.app/)
