@@ -2,7 +2,7 @@ import {
   profileName,
   profileDescription,
   profileImg,
-} from '../utils/constants';
+} from "../utils/constants";
 
 class UserInfo {
   constructor({ profileName, profileDescription, profileAvatar }) {
@@ -17,7 +17,7 @@ class UserInfo {
   }
 
   getUserInfo() {
-    const obj = {};
+    const obj ={};
     obj.name = this._profileName.textContent;
     obj.description = this._profileDescription.textContent;
     return obj;

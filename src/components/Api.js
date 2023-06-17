@@ -4,7 +4,7 @@ export class Api {
     this._headers = config.headers;
   }
 
-  async requireApi(url = '', body, method = 'GET') {
+  async requireApi(url = "", body, method = "GET") {
     try {
       const options = {
         method,
@@ -14,8 +14,8 @@ export class Api {
         options.body = JSON.stringify(body);
       }
       const response = await fetch(`${this._baseUrl}${url}`, options);
-      const contentType = response.headers.get('Content-Type');
-      if (contentType.includes('application/json')) {
+      const contentType = response.headers.get("Content-Type");
+      if (contentType.includes("application/json")) {
         const result = await response.json();
         return result;
       } else {

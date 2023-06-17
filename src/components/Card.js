@@ -1,14 +1,14 @@
 export class Card {
   static places = {
-    place: '.place',
-    title: '.place__title',
-    likeCounte: '.place__like-count',
-    likeButton: '.place__like-button',
-    likeButtonActive: 'place__like-button_active',
-    image: '.place__image',
-    deleteButton: '.place__delete-button',
-    popupConfirmDelete: '.popup_type_confirm-delete',
-    formConfirmDelete: '.popup__form_content_confirm-delete',
+    place: ".place",
+    title: ".place__title",
+    likeCounte: ".place__like-count",
+    likeButton: ".place__like-button",
+    likeButtonActive: "place__like-button_active",
+    image: ".place__image",
+    deleteButton: ".place__delete-button",
+    popupConfirmDelete: ".popup_type_confirm-delete",
+    formConfirmDelete: ".popup__form_content_confirm-delete",
   };
 
   _selectorTemplate;
@@ -50,8 +50,8 @@ export class Card {
     this._placeImg.src = this._cardInfo.link;
     this._placeTitle.textContent = this._cardInfo.name;
     this._likeCounter.textContent = this._cardInfo.likes.length;
-    this._placeImg.setAttribute('alt', this._cardInfo.name);
-    //console.log(cardInfo._id);
+    this._placeImg.setAttribute("alt", this._cardInfo.name);
+    console.log(cardInfo._id);
     this._likesCheck = this._cardInfo.likes.some((liker) => {
       return liker._id === this._profileInfo._id;
     });
@@ -71,28 +71,29 @@ export class Card {
   togglLike = (data) => {
     this._likeCounter.textContent = data.likes.length;
     this._likeButton.classList.toggle(Card.places.likeButtonActive);
-  };
+  }
 
   removeCard = () => {
     this._element.remove();
     this._element = null;
-  };
+  }
+
 
   _setEventListeners = () => {
     let likesCheck = this._likesCheck;
     //слушатель нажатия на картинку карточки
-    this._placeImg.addEventListener('click', (evt) => {
+    this._placeImg.addEventListener("click", (evt) => {
       this.handleCardClick(evt);
     });
 
     //слушатель кнопки Like
-    this._likeButton.addEventListener('click', () => {
+    this._likeButton.addEventListener("click", () => {
       this.handleLikeButtonClick(likesCheck, this);
       likesCheck = !likesCheck;
     });
 
     //слушатель кнопки удаления карточки
-    this._deleteButton.addEventListener('click', () => {
+    this._deleteButton.addEventListener("click", () => {
       this.handleDelButtonClick(this);
     });
   };
