@@ -1,7 +1,7 @@
 {
   "name": "mesto-project",
   "version": "1.0.0",
-  "description": "https://deadoutsided.github.io/mesto-project/",
+  "description": "https://vasaykh2.github.io/mesto-project/",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deadoutsided/mesto-project.git"
+    "url": "git+https://github.com/vasaykh2/mesto-project.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/deadoutsided/mesto-project/issues"
+    "url": "https://github.com/vasaykh2/mesto-project/issues"
   },
-  "homepage": "https://github.com/deadoutsided/mesto-project#readme",
+  "homepage": "https://github.com/vasaykh2/mesto-project#readme",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.3",
