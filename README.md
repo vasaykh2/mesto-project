@@ -13,7 +13,7 @@
 **Методы**
 
 Сайт выполнен по макету в Figma.
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1, https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1, https://code.s3.yandex.net/web-developer/project-6/JavaScript.Sprint-6.fig и https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%3A1)
+* [Ссылка-1 на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1), [Ссылка-2 на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1), [Ссылка-3 на макет в Figma](https://code.s3.yandex.net/web-developer/project-6/JavaScript.Sprint-6.fig), [Ссылка-4 на макет в Figma](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%3A1)
 
 Таблицы стилей .css распределены в файловой структуре каталога blocks согласно методологии БЭМ Nested.
 Шрифты с открытым доступом Inter расположены в Vendor.
@@ -69,5 +69,5 @@
 В файле .gitignore прописаны строки: node_modules и dist для push на GitHub.
 Использован инструментарий вкладки браузера Network для просмотра запросов и дебагинга.
 
-* [Ссылка на "Mesto" в GitHub Pages] (https://vasaykh2.github.io/mesto-project/)
-* [Ссылка в vercel.com] (https://mesto-project-xi.vercel.app/)
+* [Ссылка на "Mesto" в GitHub Pages](https://vasaykh2.github.io/mesto-project/)
+* [Ссылка в vercel.com](https://mesto-project-xi.vercel.app/)
